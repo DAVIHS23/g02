@@ -1,11 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nachhaltigkeit trifft Performance</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="css/style.css">
+<script src="https://d3js.org/d3.v6.min.js"></script>
 </head>
 <body>
-    <h1>Hello World!</h1>
+
+    <!-- Header -->
+    <header class="w3-container w3-blue w3-center w3-padding-32">
+        <h1 class="w3-xxxlarge"><b>Nachhaltigkeit trifft Performance: Der ESG-Firmenindex im Vergleich</b></h1>
+    </header>
+
+    <!-- Introduction Section -->
+    <section class="w3-container w3-padding-32" id="introduction">
+        <div class="w3-panel w3-leftbar w3-light-grey w3-border-teal">
+            <p><b>Gibt es eine signifikante Korrelation zwischen dem ESG-Index eines Unternehmens und seiner Aktienkursperformance 
+                über einen bestimmten Zeitraum?</b></p>
+            <p>         
+                Environmental, Social und Governance (ESG) Kriterien haben sich zu einem wichtigen Maßstab entwickelt, 
+                der zeigt, wie verantwortungsbewusst ein Unternehmen in Bereichen wie Umweltschutz, sozialem Engagement und 
+                Unternehmensführung agiert. In einer Welt, in der Nachhaltigkeit und soziale Verantwortung immer mehr an Bedeutung 
+                gewinnen, werfen Investoren und Analysten zunehmend die Frage auf: Spiegelt sich ein hohes ESG-Engagement 
+                auch in der finanziellen Performance eines Unternehmens wider? Speziell interessiert die mögliche Korrelation 
+                zwischen dem ESG-Index und der Aktienkursentwicklung. Untersuchungen in diesem Bereich könnten aufzeigen, 
+                ob Unternehmen, die in ESG-Maßnahmen führend sind, tatsächlich eine bessere Aktienkursperformance im Vergleich zu ihren 
+                weniger nachhaltigen Wettbewerbern erzielen.
+            </p>
+        </div>
+    </section>
+
+    <!-- Rankings Section -->
+    <section class="w3-row-padding w3-padding-32" id="rankings">
+        <div class="w3-half w3-container" id="esg-ranking">
+            <h2 class="w3-text-teal">ESG Index Ranking</h2>
+            <div class="w3-responsive" id="esg-table">
+                <!-- Tabelle wird durch d3.js hier eingefügt -->
+            </div>
+        </div>
+        <div class="w3-half w3-container" id="value-ranking">
+            <h2 class="w3-text-teal">Firmenwert Ranking</h2>
+            <div class="w3-responsive" id="value-table">
+                <!-- Tabelle wird durch d3.js hier eingefügt -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Scatterplot der Daten -->
+    <section class="w3-container w3-padding-32" id="time-series">
+        <div class="w3-panel w3-leftbar w3-light-grey w3-border-blue">
+            <p><b>Korrelation von ESG-Score und Aktienwert im Branchenvergleich</b></p>
+            <p>         
+                In der visuellen Analyse unseres Datensatzes präsentieren wir einen Scatterplot, der die Beziehung 
+                zwischen dem ESX Score, der den ESG-Index eines Unternehmens repräsentiert, und der Aktienkursperformance, 
+                gemessen am Wert der Aktie, aufzeigt. Dieser Plot gruppiert die Datenpunkte zusätzlich nach 
+                Branchenzugehörigkeit, um sektorspezifische Muster zu erkennen. Ziel ist es, visuelle Hinweise auf 
+                mögliche Korrelationen zu identifizieren und zu untersuchen, ob ESG-Führerschaft innerhalb verschiedener 
+                Branchen mit überlegener Marktperformance korrespondiert. Die folgende Darstellung soll ein intuitives 
+                Verständnis für die Komplexität und die Dynamik der Beziehung zwischen ESG-Verpflichtungen und finanzieller 
+                Rentabilität bieten.
+            </p>
+        </div>
+        <section class="w3-container" id="checkboxes">
+            <h3>Branchenfilter</h3>
+            <!-- Checkboxen werden durch d3.js hier eingefügt -->
+            <div id="checkbox-container"></div>
+        </section>
+        <div id="scatterplot">
+            <!-- Chart wird durch d3.js hier eingefügt -->
+        </div>
+    </section>
+
+    <!-- Explanation Section -->
+    <section class="w3-container w3-padding-32" id="explanation">
+        <p><b>Interpretation der Daten:</b> Hier kommen weitere Informationen zu den dargestellten Daten...</p>
+    </section>
+
+    <!-- Interactive Section -->
+    <section class="w3-container w3-padding-64" id="interactive">
+        <h2>Interaktive Visualisierung</h2>
+        <input class="w3-input w3-border" type="text" id="search" placeholder="Suche nach Firma oder Branche...">
+        <div id="bubble-plot">
+            <!-- Interactive visualization goes here -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="w3-container w3-blue w3-center w3-padding-16">
+        <p>Weitere Ressourcen und Kontaktinformationen hier.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html>

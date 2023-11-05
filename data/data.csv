@@ -1,0 +1,501 @@
+company,esg_score,value,industry
+ApexElectronics305,95,3976562,Technology
+LegacyFoundations671,68,1355173,Technology
+VanguardCommodities133,91,3391501,Real Estate
+PioneerHoldings735,60,3726201,Technology
+MajorConstructions599,98,5126900,Manufacturing
+DynamicHorizons258,89,1608183,Real Estate
+ChoiceAutomations978,22,2216127,Technology
+CrownCorporation944,48,1941890,Education
+CollectiveMedia698,90,4903903,Transportation
+BroadTechnologies112,50,3251516,Finance
+CapitalProfessionals246,92,4052629,Finance
+AlphaEngineering43,34,2413027,Agriculture
+HyperAutomations302,96,4088803,Energy
+ChoiceConsultancy956,52,3415972,Agriculture
+PioneerVentures560,63,4282304,Manufacturing
+SunriseInternational621,83,3009298,Manufacturing
+AdvancedStudios784,89,2898786,Education
+RoyalCommunications276,52,2781273,Transportation
+CrownEngineering846,94,5154645,Retail
+EastCommodities375,27,4090335,Transportation
+KeystoneEnterprises998,69,2454494,Technology
+HyperFoundations728,26,2472709,Finance
+ProCommodities971,48,4017829,Education
+PrincipalCommunications383,38,4174616,Technology
+CollectiveEntertainment112,33,3325856,Healthcare
+EastEnterprises227,55,1802792,Energy
+RedwoodTechnologies895,44,3291360,Technology
+HighFinancial14,89,2115942,Healthcare
+UnitedInstruments115,53,2460163,Finance
+AdvancedCapital294,30,2980464,Finance
+HighClinics648,89,1446618,Manufacturing
+MetroConsultancy786,93,4190337,Energy
+LeadingProductions270,90,1813105,Finance
+ChoiceElements820,55,4486589,Healthcare
+AlphaAnalytics313,39,2540284,Finance
+DynamicAutomations511,59,1640235,Agriculture
+MotionLaboratories946,77,3102352,Retail
+AdvancedDynamics148,21,1599498,Real Estate
+RedwoodCapital274,81,3148506,Healthcare
+MotionEngineering779,70,4689104,Education
+BroadConstructions499,61,2547431,Finance
+SunriseCommunications984,36,1299237,Technology
+SummitAnalytics338,28,3358763,Finance
+IconicLogistics738,90,1737362,Finance
+RightCapital421,32,3672008,Finance
+ChoiceGroup111,39,2644207,Technology
+NovaStudios371,87,2452533,Retail
+BlueEngineering375,27,1801722,Manufacturing
+CrownFinancial973,52,1796845,Technology
+PrimeEntertainment678,20,2816801,Real Estate
+CrownTechnologies699,42,4411004,Education
+NovaAnalytics926,81,2243288,Healthcare
+VanguardVisions880,93,4775330,Education
+GrandLogistics30,40,3071349,Education
+PacificInsights725,87,2069099,Finance
+GlobalCapital711,93,1822825,Manufacturing
+MotionHoldings283,49,3418845,Energy
+PrincipalMedia101,38,1591020,Technology
+KeystoneAutomations679,78,4918496,Technology
+QuantumTechnologies828,86,2350751,Technology
+ClassicInsurance204,99,4520622,Technology
+AlphaCommunications92,29,4192208,Manufacturing
+PrincipalStudios658,30,3053655,Technology
+PrimeElectronics733,37,2602419,Technology
+NorthConsultancy421,61,3274111,Education
+SilverInsights41,87,5081111,Transportation
+CentralInvestments636,54,1879402,Agriculture
+RedwoodProfessionals495,53,4354392,Retail
+AdvancedElements363,88,1466828,Retail
+OmegaProductions765,53,3641913,Retail
+NovaHorizons286,35,2275246,Technology
+GrandFinancial182,91,2639252,Finance
+CirrusCommodities186,44,1503660,Education
+DynamicLaboratories792,64,1427224,Retail
+SilverDynamics615,40,1230421,Manufacturing
+InfiniteAutomations835,81,4187168,Real Estate
+UrbanMobility723,34,2254810,Energy
+DeltaFoundations915,32,2468289,Energy
+PrincipalCommodities132,56,1919628,Retail
+DeepFinancial217,41,2821624,Real Estate
+CapitalWorks325,88,5412192,Technology
+SouthernPartners375,85,1936209,Manufacturing
+ParamountLaboratories219,79,3698925,Technology
+CrestTechnologies810,20,1311646,Retail
+CedarInvestments840,46,1252585,Agriculture
+CirrusHoldings432,49,3716216,Transportation
+MotionStudios830,33,2433589,Technology
+SterlingHoldings917,89,2401734,Transportation
+SterlingGroup320,65,2302595,Real Estate
+BlueRealty449,56,4708570,Finance
+RegalEssentials390,43,4111614,Real Estate
+ChoiceAnalytics456,22,3915371,Finance
+BlueCapital574,41,3274630,Technology
+CedarEngineering542,91,2810650,Agriculture
+CedarConcepts536,92,4534215,Healthcare
+SterlingTechnologies222,24,1055857,Retail
+RapidInternational541,64,4900233,Energy
+LeadingInsurance882,50,2237311,Healthcare
+ChoiceInsights500,52,4647409,Agriculture
+RapidAnalytics738,96,2193003,Manufacturing
+EastCreations692,61,2069067,Transportation
+CentralAnalytics23,97,3740296,Transportation
+ForwardConstructions384,88,2281037,Finance
+CirrusTechnologies643,83,2907168,Real Estate
+SunriseWorks402,70,4145470,Finance
+InfiniteAutomations29,35,3306960,Technology
+MetroLaboratories237,25,1951106,Manufacturing
+QuestCorporation148,46,4356575,Agriculture
+RiverFinancial484,29,3723561,Finance
+SterlingLaboratories774,75,4191255,Healthcare
+RapidServices259,28,3078582,Agriculture
+DynamicConcepts61,49,2666002,Retail
+NorthConstructions541,52,2829688,Education
+SterlingClinics875,86,2051633,Energy
+WestEnterprises930,71,3296259,Energy
+CrestPartners310,41,3714435,Finance
+MetroPartners679,20,1336458,Finance
+IconicCapital384,55,2019814,Retail
+MajorCreations104,45,2798224,Energy
+DeltaInvestments889,76,3179271,Manufacturing
+DeltaRealty943,44,4304513,Agriculture
+AlphaInternational949,68,4420180,Transportation
+HighProductions582,40,3407711,Technology
+SupremeElements651,26,2025417,Education
+RoyalClinics161,61,4062045,Transportation
+LeadingServices57,51,2682603,Finance
+ChoiceDynamics864,92,5201110,Technology
+CedarElectronics590,84,2972408,Finance
+GrandConstructions148,47,1581062,Agriculture
+LeadingMedia619,28,1840020,Technology
+PeakMedia776,99,3140170,Technology
+SupremeInternational141,38,2183895,Education
+AlphaInsurance599,74,3614946,Healthcare
+SouthernHoldings958,64,1580190,Energy
+PrimeEnterprises993,82,4026296,Technology
+SolarNetworks82,26,1197988,Energy
+RedwoodAnalytics337,94,1839465,Energy
+SterlingHoldings120,59,3660272,Finance
+CollectiveMedia407,25,2933598,Real Estate
+ChoiceEnterprises574,42,2538752,Energy
+MetroLaboratories477,23,4016248,Transportation
+PioneerConstructions371,73,3975278,Retail
+ZenithServices301,31,3510374,Education
+AtlasServices796,92,2223883,Technology
+VanguardInstruments274,99,2670893,Real Estate
+RegalEssentials612,62,2761978,Finance
+HighFinancial302,42,2916452,Technology
+NovaNetworks501,55,3130221,Retail
+HyperInvestments637,63,4687366,Manufacturing
+RegalFoundations217,87,4955871,Agriculture
+HyperEngineering467,44,3844122,Finance
+CirrusDynamics225,78,4254117,Education
+SilverGroup584,66,2431577,Transportation
+ChoiceConcepts240,24,1756042,Education
+OmegaConstructions36,28,3939981,Transportation
+VanguardEntertainment236,97,2020623,Manufacturing
+CrestHorizons82,45,1294357,Retail
+PrincipalGroup143,30,1515740,Healthcare
+PeakInternational483,23,3111677,Real Estate
+RapidMobility66,90,2512287,Energy
+QuantumElectronics528,48,4334708,Transportation
+CoastalServices946,79,3587318,Transportation
+ParamountConcepts707,50,3880328,Transportation
+RiverVisions135,47,2133210,Healthcare
+SummitProductions542,65,4943991,Retail
+SterlingMobility226,50,2896905,Energy
+CrestStudios715,61,1409028,Real Estate
+LegacyEssentials199,50,4533056,Technology
+CedarEngineering607,72,3582015,Manufacturing
+HighInsights209,46,2564929,Education
+CrownAutomations804,28,3104957,Real Estate
+IronClinics888,51,1889488,Real Estate
+RapidInternational196,79,2595247,Real Estate
+VanguardVentures969,92,2482250,Retail
+SilverWorks878,78,2351529,Transportation
+HighInsights543,99,3126844,Real Estate
+CirrusServices344,52,1770188,Technology
+ParamountCapital412,70,4860408,Technology
+ChoiceCapital726,47,1306833,Retail
+FirstEngineering465,87,4184447,Technology
+CollectiveStudios452,21,3541808,Healthcare
+ApexInsurance25,71,2591111,Finance
+ForwardFinancial915,71,1354401,Real Estate
+NorthMedia680,30,1193488,Technology
+SupremeFinancial143,92,4994806,Manufacturing
+RightLogistics534,25,4102101,Agriculture
+TitanTechnologies34,61,2123906,Finance
+ProCapital940,78,3758621,Technology
+CoastalEssentials607,69,2906331,Real Estate
+RedwoodLaboratories797,45,4163599,Energy
+RoyalCapital292,31,2088599,Retail
+VanguardCapital443,77,2693684,Education
+CrestMedia374,74,4265906,Retail
+IconicAnalytics436,23,3483191,Finance
+IconicClinics51,23,3682386,Retail
+CedarCommunications747,47,1497127,Transportation
+LeadingMedia46,56,1271192,Agriculture
+ParamountDynamics601,31,1689453,Transportation
+RapidGroup570,51,3743626,Manufacturing
+ApexConstructions378,44,2859473,Finance
+QuestInsights948,73,2875669,Retail
+HighProfessionals696,57,4646268,Agriculture
+PrincipalEngineering182,51,2495759,Agriculture
+VanguardVisions555,56,4485005,Retail
+HyperHoldings131,63,1277920,Transportation
+RiverInvestments173,90,3830721,Finance
+RedwoodProfessionals420,52,3028992,Real Estate
+TitanVentures76,34,2714767,Education
+LeadingHoldings763,60,3690083,Retail
+ClassicHorizons789,59,2965204,Manufacturing
+ParamountStudios75,99,2271830,Real Estate
+CrestWorks594,69,4458282,Technology
+PacificMobility97,90,2308717,Finance
+DeltaProductions414,49,2174930,Healthcare
+IronFinancial721,94,4381546,Energy
+WestCommodities113,63,4829536,Healthcare
+RightInstruments552,45,3703723,Real Estate
+HighSecurity244,89,2455871,Education
+ParamountEngineering415,32,2187171,Real Estate
+RiverCorporation885,63,5032909,Education
+ApexCapital8,46,2990008,Manufacturing
+CollectiveCommodities37,57,3685175,Finance
+EliteConsultancy433,30,2219875,Manufacturing
+PeakMedia975,85,4999868,Finance
+CapitalCapital372,53,2673060,Energy
+SterlingInsights793,54,4056321,Retail
+GlobalHoldings465,82,1994782,Technology
+PeakFoundations549,44,3952808,Transportation
+UrbanInvestments952,85,1772039,Finance
+ForwardElectronics42,43,1585271,Finance
+SilverConcepts878,95,3882273,Transportation
+PrincipalFinancial66,77,4849114,Retail
+GlobalServices762,34,1596023,Technology
+TerraEngineering317,67,1667767,Education
+EastCorporation571,54,2502944,Real Estate
+TitanHoldings600,99,4430731,Agriculture
+GrandEntertainment451,33,2197431,Education
+NorthAnalytics110,95,4978557,Retail
+WestHorizons251,86,4166746,Technology
+CoastalEntertainment245,40,3704239,Finance
+TerraProfessionals758,56,4157035,Technology
+CentralVentures472,98,4281999,Technology
+LeadingCommunications789,95,3042713,Real Estate
+MotionWorks132,63,4940230,Agriculture
+RapidCreations97,26,3779926,Education
+CrownFoundations798,43,2842631,Real Estate
+BlueCommunications274,54,2531559,Healthcare
+RoyalFoundations105,75,4417584,Education
+CoastalInternational913,39,1285668,Energy
+IconicInsights803,21,1438465,Manufacturing
+UnitedPartners798,87,2453763,Healthcare
+DynamicEssentials248,92,4862569,Transportation
+VanguardTechnologies986,56,2546630,Finance
+RedwoodPartners21,20,1134490,Retail
+RiverAutomations697,75,5138639,Healthcare
+IconicEnterprises511,69,4567179,Transportation
+TerraCorporation338,87,2597023,Education
+ClassicCommodities79,78,4458219,Healthcare
+HyperMedia179,51,3626441,Transportation
+NovaHorizons590,63,1919935,Agriculture
+SouthernCommodities82,61,2659973,Manufacturing
+ClassicElectronics669,62,1377645,Agriculture
+MotionElectronics577,78,1483639,Education
+RightElements760,99,4140772,Retail
+MajorCapital540,66,3217770,Education
+AdvancedFinancial148,58,1833243,Retail
+CirrusNetworks211,91,3613984,Real Estate
+IronMedia267,20,1468528,Transportation
+VanguardFoundations956,53,4690076,Transportation
+VanguardCapital331,65,1662760,Retail
+BrightClinics745,20,1046783,Agriculture
+LegacyMedia753,95,1916432,Transportation
+SummitStudios340,38,3802323,Agriculture
+CollectiveCapital764,62,4046121,Energy
+ChoiceElectronics266,87,2995562,Real Estate
+AlphaProfessionals633,47,1638960,Retail
+SupremeLaboratories301,45,3041136,Manufacturing
+ParamountMobility132,93,1716231,Real Estate
+WestNetworks273,25,2023610,Energy
+RiverMedia764,82,4957970,Energy
+DynamicInvestments433,80,3673641,Energy
+ClassicCorporation171,96,2023654,Real Estate
+HyperNetworks827,29,1081433,Finance
+ClassicCorporation427,77,2486291,Manufacturing
+ApexProductions274,67,4548432,Transportation
+RightRealty681,56,4449524,Education
+LeadingAutomations473,24,1457885,Healthcare
+AlphaLogistics923,62,2455850,Real Estate
+UrbanFoundations244,54,1354978,Real Estate
+BrightConsultancy61,54,1350480,Energy
+IconicServices798,98,2677541,Transportation
+GrandFoundations419,80,1853736,Retail
+RiverNetworks402,71,4848828,Agriculture
+NovaFoundations468,77,4838954,Finance
+ClassicMedia896,50,1394487,Real Estate
+SouthernMobility711,89,2884831,Education
+LegacyProfessionals289,72,3296046,Education
+ChoiceWorks235,23,1254344,Energy
+RiverConcepts337,99,3316558,Technology
+LeadingElements429,73,4869558,Agriculture
+QuestInsurance666,67,4281965,Manufacturing
+CentralEntertainment457,49,4113116,Education
+CrestCommunications333,46,4055024,Technology
+BrightElements36,71,2426389,Finance
+RegalVisions45,40,4244261,Real Estate
+AdvancedElements9,58,3484038,Transportation
+RoyalMobility456,71,4537085,Finance
+MajorConstructions662,51,1195346,Education
+EliteInvestments100,30,1796061,Education
+DeltaMobility242,37,1601493,Education
+CrestInsurance872,73,3626371,Education
+LegacyCreations632,78,5165098,Finance
+RapidFinancial200,66,1475386,Energy
+BrightEntertainment328,67,4800650,Education
+PioneerInsights166,44,4294389,Energy
+BrightCreations33,34,1162689,Education
+SummitCapital159,43,2691836,Healthcare
+CedarMobility461,56,1399538,Retail
+CirrusMedia412,27,2594854,Energy
+NovaProfessionals296,78,2558324,Agriculture
+PrincipalMedia478,68,4289322,Real Estate
+QuestInternational17,73,2091604,Energy
+HighInstruments213,97,3593056,Technology
+PrincipalSecurity586,78,2537502,Healthcare
+HighServices50,29,3884361,Transportation
+CrownInternational365,73,2108890,Healthcare
+CentralCommodities161,50,4360641,Technology
+NorthEngineering212,59,1737835,Real Estate
+DeepRealty100,20,2322950,Energy
+SterlingMobility802,41,1558132,Real Estate
+GlobalProfessionals591,71,4117803,Real Estate
+IronElements321,56,2869512,Agriculture
+DeepCreations130,56,2557747,Education
+TitanVisions663,58,3337973,Education
+SouthernWorks627,22,1060542,Technology
+ForwardCapital475,55,3219439,Transportation
+NovaInsurance618,76,3504271,Education
+SolarClinics615,55,1449427,Transportation
+GlobalHoldings305,64,2149192,Technology
+WestCorporation229,23,2861393,Transportation
+DeepVentures657,60,2970443,Education
+CrestAnalytics553,42,4200387,Technology
+PeakElectronics681,62,2676997,Manufacturing
+RiverCorporation653,91,2532956,Manufacturing
+AtlasLaboratories356,33,4151685,Finance
+AdvancedEssentials521,20,2168761,Healthcare
+DeltaElements550,40,1822241,Healthcare
+RegalDynamics656,33,2007254,Real Estate
+PacificNetworks825,72,2151406,Education
+DynamicSecurity947,80,3289880,Agriculture
+PrimeDynamics39,62,3785022,Education
+QuantumInternational456,38,3679501,Transportation
+PrimeConstructions572,39,1927885,Finance
+SilverCorporation876,60,4950927,Energy
+MotionHorizons399,20,1691436,Technology
+SummitInstruments779,64,2810917,Technology
+RiverSecurity647,73,2101359,Real Estate
+BlueServices285,95,3754487,Real Estate
+GlobalHorizons359,74,1992959,Finance
+PioneerPartners245,55,2376333,Real Estate
+DeltaConcepts783,66,4171115,Education
+MotionPartners561,74,2073181,Transportation
+VanguardFinancial525,81,4038446,Agriculture
+NovaProductions590,86,4920908,Technology
+WestStudios798,66,2221043,Agriculture
+EastHorizons376,71,3696375,Agriculture
+RiverGroup608,20,3586345,Agriculture
+CoastalInternational962,23,2760545,Agriculture
+CrestServices992,76,1407383,Technology
+ClassicMedia289,59,4710772,Finance
+ClassicInsurance177,55,2599488,Healthcare
+NorthInsights880,27,1105936,Transportation
+RiverCapital859,40,2846639,Energy
+KeystoneGroup972,67,1702686,Agriculture
+NovaCorporation788,80,2116434,Finance
+RegalTechnologies836,55,2456213,Transportation
+DeepCorporation605,76,2250830,Energy
+ClassicProfessionals467,61,3180237,Technology
+HyperFinancial485,63,2237436,Energy
+CentralCapital158,20,3583094,Manufacturing
+DynamicInstruments278,29,3764734,Education
+WestGroup342,53,4808931,Healthcare
+PrimeInstruments510,46,1847677,Technology
+NorthMedia815,55,3061141,Technology
+CentralInvestments316,66,4904092,Energy
+CedarCommunications195,75,3512152,Energy
+CollectiveMobility495,99,3601365,Agriculture
+SupremeHorizons314,87,4969154,Technology
+RoyalPartners798,59,2323266,Real Estate
+OmegaDynamics998,33,1584657,Healthcare
+CrownCapital242,59,4728477,Manufacturing
+CrownElements281,48,2686683,Finance
+RedwoodAnalytics890,32,2210606,Education
+BrightMobility694,83,1704635,Agriculture
+SolarVisions472,89,2575308,Education
+CirrusInsights924,32,2022037,Agriculture
+GrandProductions758,43,4023010,Technology
+InfiniteCorporation645,81,5049198,Retail
+LeadingCorporation607,23,2523699,Technology
+KeystoneLaboratories368,65,4098169,Healthcare
+TitanEngineering863,76,1507945,Energy
+ZenithServices770,73,5287806,Energy
+ParamountProductions185,70,3381434,Manufacturing
+RedwoodLaboratories650,93,4623522,Education
+SouthernCorporation390,80,2739246,Education
+PeakProductions706,85,4491281,Transportation
+PrincipalCommunications80,37,1780413,Retail
+RiverEnterprises485,73,4544978,Finance
+TitanWorks156,29,3422891,Agriculture
+AdvancedProductions341,27,2455451,Finance
+TerraNetworks412,40,2855757,Energy
+SummitConsultancy101,30,3295193,Transportation
+CoastalInvestments373,56,3002998,Agriculture
+BrightAnalytics738,69,4438510,Agriculture
+AtlasHorizons941,52,3696234,Real Estate
+AdvancedLaboratories995,99,5253896,Finance
+ChoiceHoldings144,97,3529364,Retail
+BroadInternational52,22,2100724,Healthcare
+BrightServices748,81,3555989,Real Estate
+CapitalNetworks636,78,5374558,Education
+EliteWorks317,69,2799545,Finance
+RegalRealty101,70,3521113,Finance
+CrownEnterprises946,50,3547928,Energy
+IconicEntertainment933,31,2479007,Energy
+SilverSecurity198,27,2797732,Healthcare
+FirstAnalytics961,20,2838412,Retail
+SouthernInstruments446,66,2426046,Agriculture
+MetroDynamics187,97,4086508,Education
+ChoiceWorks961,22,2366640,Manufacturing
+SouthernCommunications608,39,2320089,Agriculture
+DynamicCreations641,21,2264632,Energy
+ZenithSecurity912,59,4202403,Agriculture
+DeepConcepts973,56,2438834,Finance
+PioneerGroup887,66,3857840,Agriculture
+ZenithDynamics1,31,3042203,Real Estate
+ChoiceGroup849,77,1567285,Retail
+MajorVisions232,24,1377584,Education
+PrincipalInstruments534,68,1707023,Real Estate
+EastVentures590,55,1646248,Retail
+FirstEnterprises596,58,4733178,Agriculture
+TitanInsurance423,43,3673795,Technology
+IronCommodities556,66,3646111,Technology
+ClassicDynamics646,58,4374310,Education
+UrbanMobility284,84,2252185,Education
+OmegaLogistics284,31,1119026,Finance
+ProClinics66,27,1974246,Real Estate
+QuantumTechnologies117,85,5166727,Manufacturing
+IconicTechnologies645,87,2331839,Finance
+ForwardLogistics436,33,2040615,Manufacturing
+QuestTechnologies562,64,3333408,Energy
+BrightProductions753,41,2628034,Energy
+SupremeMedia166,38,2811178,Retail
+ForwardLaboratories3,88,4001509,Education
+ForwardEnterprises197,80,2333551,Healthcare
+BrightFoundations575,24,3671329,Education
+VanguardCorporation568,28,3739610,Real Estate
+CentralAutomations612,66,2184587,Finance
+SterlingHorizons787,78,2476264,Technology
+GrandLaboratories204,73,4599953,Technology
+CirrusWorks869,20,1765836,Healthcare
+NovaHoldings945,58,3751953,Manufacturing
+GrandServices69,43,2429249,Manufacturing
+WestClinics997,90,5521907,Healthcare
+CollectiveTechnologies412,91,2325524,Transportation
+RapidEngineering109,93,5733745,Finance
+VanguardServices995,95,5562599,Finance
+ClassicEntertainment614,96,3595669,Technology
+RoyalStudios772,23,3897076,Technology
+CollectiveProfessionals853,93,4633516,Finance
+RapidClinics470,87,1465404,Retail
+NorthInsights581,81,1463475,Energy
+OmegaCreations395,65,1805751,Finance
+GlobalElectronics574,40,2271559,Education
+LeadingAutomations957,36,2820090,Manufacturing
+PrincipalLogistics355,33,2696103,Retail
+NorthLaboratories72,85,4335830,Energy
+CapitalLaboratories556,29,1513734,Education
+SolarStudios401,71,1992643,Technology
+MajorHoldings206,36,3911145,Retail
+QuantumRealty514,40,2622556,Technology
+AtlasPartners287,48,3541148,Education
+CollectiveClinics206,91,3480361,Real Estate
+AdvancedConsultancy912,94,1866691,Retail
+CrownEssentials666,20,2377386,Education
+CollectiveMobility163,24,2893750,Technology
+CoastalFoundations645,59,2282036,Agriculture
+BroadInstruments797,53,1223990,Agriculture
+RightMobility650,93,2226799,Transportation
+LeadingConstructions586,84,3040006,Finance
+TitanGroup707,84,2046046,Real Estate
+NorthFinancial985,73,3220932,Agriculture
+RapidVentures179,86,2594683,Finance
+TitanGroup632,63,1443228,Energy
+BrightElements909,86,3526803,Energy
+LeadingWorks107,65,4760420,Technology
+TitanClinics355,55,2830961,Transportation
+WestSecurity995,74,1894052,Healthcare
+GlobalInsights902,37,1320466,Healthcare
+EliteHoldings374,85,3180874,Education
+CrestConstructions200,88,4577132,Healthcare
