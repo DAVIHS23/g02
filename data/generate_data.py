@@ -58,12 +58,17 @@ industries = [
 # Zufällige Zuweisung einer Branche für jede Firma
 random_industries = [random.choice(industries) for _ in range(num_entries)]
 
+# Generieren von zufälligen Mitarbeitergrößen für jede Firma
+# Angenommen, die Größen sollen zwischen 10 und 10.000 liegen
+employee_sizes = np.random.randint(10, 10001, size=num_entries)
+
 # Erstellen eines DataFrame
 df = pd.DataFrame({
     'company': companies,
     'esg_score': esg_scores,
     'value': values,
-    'industry': random_industries  # Hinzufügen der Branche
+    'industry': random_industries ,
+    'employee_sizes': employee_sizes
 })
 
 # Mischen der Einträge für Vielfalt

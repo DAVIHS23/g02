@@ -14,6 +14,10 @@ d3.csv(csvFilePath).then(data => {
 
     // Nun erstelle das Streudiagramm, mit Übergabe des entsprechenden Eigenschaftsnamens für die Industrie
     createScatterplot('#scatterplot', data, 'esg_score', 'value', 'industry');  // Ersetze 'industry' mit deinem tatsächlichen Eigenschaftsnamen für die Industrie, falls er anders ist
+
+    // Bereiten Sie die Daten für das Donut-Diagramm vor
+    const preparedData = prepareDonutData(data, 'industry', 'employee_sizes');
+    createDonutChart('#donut-plot', preparedData);
 });
 
 // Funktion zur Erstellung der Rangliste in einem HTML-Element
@@ -169,6 +173,7 @@ function addIndustryCheckboxes(data, industryProp) {
                               .attr("checked", true); // Standardmäßig alle aktiviert
   
       checkboxGroup.append("label")
+                   .attr("class", "checkbox-label")
                    .attr("for", industry) // Damit das Label richtig mit der Checkbox verknüpft ist
                    .text(industry);
   
@@ -178,4 +183,96 @@ function addIndustryCheckboxes(data, industryProp) {
   }
   
 
+// Funktion zum Vorbereiten der Daten für das Donut-Diagramm
+function prepareDonutData(data, industryProp, employeeSizeProp) {
+  // Verwenden von d3.rollup, um die Daten zu aggregieren
+  const industryCounts = d3.rollup(data, 
+                                   v => d3.sum(v, d => +d[employeeSizeProp]), // Summiere das 'employeeSizeProp' für jede Gruppe
+                                   d => d[industryProp]); // Gruppierung nach 'industryProp'
 
+  // Konvertieren der Map zurück in ein für d3.pie passendes Array
+  const industryArray = Array.from(industryCounts, ([key, value]) => ({ key, value }));
+
+  return industryArray;
+}
+
+function createDonutChart(selector, data) {
+  // Größe und Marge des Diagramms festlegen
+  const width = 800, // Breiter, um Platz für Beschriftungen zu schaffen
+        height = 550,
+        margin = 100; // Größere Marge für Beschriftungen
+  const radius = Math.min(width, height) / 2 - margin;
+
+  // SVG-Element erstellen
+  const svg = d3.select(selector)
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .append("g")
+                .attr("transform", `translate(${width / 2}, ${height / 2})`);
+
+  // Die Farbskala definieren
+  const color = d3.scaleOrdinal(d3.schemeCategory10);
+
+  // Daten für das Diagramm vorbereiten
+  const pie = d3.pie()
+                .value(d => d.value)
+                .sort(null); // um sicherzustellen, dass die Reihenfolge der Daten erhalten bleibt
+  const dataReady = pie(data);
+
+  // Der Bogen-Generator für das Donut-Diagramm
+  const arc = d3.arc()
+                .innerRadius(radius * 0.5) // Für den Donut-Effekt
+                .outerRadius(radius);
+
+  // Die Segmente des Donut-Diagramms erstellen
+  svg.selectAll('allSlices')
+     .data(dataReady)
+     .enter()
+     .append('path')
+     .attr('d', arc)
+     .attr('fill', d => color(d.data.key))
+     .attr("stroke", "white")
+     .style("stroke-width", "2px")
+     .style("opacity", 0.7);
+
+  // Der Bogen-Generator für die Labels
+  const labelArc = d3.arc()
+                     .innerRadius(radius * 0.85)
+                     .outerRadius(radius * 0.85);
+
+  // Polylinien für die Labels hinzufügen
+  svg.selectAll('allPolylines')
+     .data(dataReady)
+     .enter()
+     .append('polyline')
+     .attr('points', d => {
+         const posA = arc.centroid(d); // Linienanfang auf dem Bogen
+         const posB = labelArc.centroid(d); // Linienmitte
+         const posC = labelArc.centroid(d); // Linienende
+         posC[0] = radius * 0.95 * (midAngle(d) < Math.PI ? 1 : -1); // Horizontaler Abstand
+         return [posA, posB, posC];
+     })
+     .style('fill', 'none')
+     .style('stroke', 'grey')
+     .style('stroke-width', '1px');
+
+  // Beschriftungen hinzufügen
+  svg.selectAll('allLabels')
+     .data(dataReady)
+     .enter()
+     .append('text')
+     .text(d => `${d.data.key}: ${d.data.value}`)
+     .attr('transform', d => {
+         const pos = labelArc.centroid(d);
+         pos[0] = radius * (midAngle(d) < Math.PI ? 1 : -1); // Horizontaler Abstand
+         return `translate(${pos})`;
+     })
+     .style('text-anchor', d => midAngle(d) < Math.PI ? 'start' : 'end')
+     .style('font-size', '12px');
+
+  // Hilfsfunktion zur Bestimmung der Seiten (links/rechts) für die Textbeschriftung
+  function midAngle(d) {
+      return d.startAngle + (d.endAngle - d.startAngle) / 2;
+  }
+}

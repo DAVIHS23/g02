@@ -1,4 +1,10 @@
-/* Stil für den Ranglisten-Container, falls noch nicht vorhanden */
+
+.whole-page {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0;
+}
+
 #rankings {
     display: flex;
     flex-wrap: nowrap;
@@ -30,4 +36,35 @@
     display: flex;
     align-items: center; /* Zentriert das Label vertikal mit der Checkbox */
   }
-  
+
+  .checkbox-label {
+    margin-left: 5px;
+  }
+
+    /* Create a Parallax Effect */
+    .bgimg-1, .bgimg-2, .navbarbg {
+    background-size: cover; /* Sorgt dafür, dass das Bild den Container vollständig abdeckt */
+    background-position: center; /* Zentriert das Bild im Container */
+    background-repeat: no-repeat; /* Verhindert das Wiederholen des Bildes */
+    background-attachment: fixed; /* Das Bild bleibt beim Scrollen an der gleichen Stelle */
+        
+
+    height: 100vh; /* Setzt die Höhe auf 100% der Ansichtshöhe (viewport height) */
+    width: 100vw; /* Setzt die Breite auf 100% der Ansichtsbreite (viewport width) */
+    }
+
+
+  .bgimg-1 {
+    background-image: url('/image/image3.png');
+    min-height: 100%;
+  }
+
+  .w3-bar .w3-bar-item:hover {
+    background-color: teal !important; /* Setzt den Hintergrund auf Teal beim Hover */
+    color: white !important; /* Setzt die Textfarbe auf Weiß beim Hover */
+}
+
+@keyframes opac {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
