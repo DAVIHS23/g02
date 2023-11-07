@@ -1,11 +1,177 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nachhaltigkeit trifft Performance</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="css/style.css">
+<script src="https://d3js.org/d3.v6.min.js"></script>
 </head>
+
 <body>
-    <h1>Hello World!</h1>
+
+
+    <!-- NAVIGATION BAR -->
+    <section class="w3-top w3-teal">
+        <nav class="w3-bar" id="myNavbar">
+            <a href="#start" class="w3-bar-item w3-button w3-text-white">Home</a>
+            <a href="#introduction" class="w3-bar-item w3-button w3-text-white">Einführung</a>
+            <a href="#rankings" class="w3-bar-item w3-button w3-text-white">Ranking</a>
+            <a href="#time-series" class="w3-bar-item w3-button w3-text-white">Zeitreihe</a>
+            <a href="#interactive" class="w3-bar-item w3-button w3-text-white">Industrie</a>
+            <a href="#explanation" class="w3-bar-item w3-button w3-text-white">Erklärung</a>
+            <a href="#references" class="w3-bar-item w3-button w3-text-white">Referenzen</a>
+            <a href="#footer" class="w3-bar-item w3-button w3-text-white">Team</a>
+        </nav>
+    </section>
+    
+    <!-- Home Screen Section with Background Image -->
+    <section class="bgimg-1 w3-display-container " id="start">
+        <div class="w3-auto w3-opacity-off w3-display-middle w3-container w3-teal w3-center w3-padding-32">
+            <h1 class="w3-xxxlarge"><b>Nachhaltigkeit trifft Performance: Der ESG-Firmenindex im Vergleich</b></h1>
+         </div>
+    </section>
+
+    <div class="whole-page">
+        <!-- Introduction Section -->
+        <section class="w3-container w3-padding-32" id="introduction">
+            <div class="w3-panel w3-leftbar w3-light-grey w3-border-teal">
+                <p><b>Gibt es eine signifikante Korrelation zwischen dem ESG-Index eines Unternehmens und seiner Aktienkursperformance 
+                    über einen bestimmten Zeitraum?</b></p>
+                <p>         
+                    Environmental, Social und Governance (ESG) Kriterien haben sich zu einem wichtigen Maßstab entwickelt, 
+                    der zeigt, wie verantwortungsbewusst ein Unternehmen in Bereichen wie Umweltschutz, sozialem Engagement und 
+                    Unternehmensführung agiert. In einer Welt, in der Nachhaltigkeit und soziale Verantwortung immer mehr an Bedeutung 
+                    gewinnen, werfen Investoren und Analysten zunehmend die Frage auf: Spiegelt sich ein hohes ESG-Engagement 
+                    auch in der finanziellen Performance eines Unternehmens wider? Speziell interessiert die mögliche Korrelation 
+                    zwischen dem ESG-Index und der Aktienkursentwicklung. Untersuchungen in diesem Bereich könnten aufzeigen, 
+                    ob Unternehmen, die in ESG-Maßnahmen führend sind, tatsächlich eine bessere Aktienkursperformance im Vergleich zu ihren 
+                    weniger nachhaltigen Wettbewerbern erzielen.
+                </p>
+            </div>
+        </section>
+
+        <!-- Rankings Section -->
+        <section class="w3-row-padding w3-padding-32" id="rankings">
+            <div class="w3-half w3-container" id="esg-ranking">
+                <h2 class="w3-text-teal">ESG Index Ranking</h2>
+                <div class="w3-responsive" id="esg-table">
+                    <!-- Tabelle wird durch d3.js hier eingefügt -->
+                </div>
+            </div>
+            <div class="w3-half w3-container" id="value-ranking">
+                <h2 class="w3-text-teal">Firmenwert Ranking</h2>
+                <div class="w3-responsive" id="value-table">
+                    <!-- Tabelle wird durch d3.js hier eingefügt -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Scatterplot der Daten -->
+        <section class="w3-container w3-padding-32" id="time-series">
+            <div class="w3-panel w3-leftbar w3-light-grey w3-border-teal">
+                <p><b>Korrelation von ESG-Score und Aktienwert im Branchenvergleich</b></p>
+                <p>         
+                    In der visuellen Analyse unseres Datensatzes präsentieren wir einen Scatterplot, der die Beziehung 
+                    zwischen dem ESX Score, der den ESG-Index eines Unternehmens repräsentiert, und der Aktienkursperformance, 
+                    gemessen am Wert der Aktie, aufzeigt. Dieser Plot gruppiert die Datenpunkte zusätzlich nach 
+                    Branchenzugehörigkeit, um sektorspezifische Muster zu erkennen. Ziel ist es, visuelle Hinweise auf 
+                    mögliche Korrelationen zu identifizieren und zu untersuchen, ob ESG-Führerschaft innerhalb verschiedener 
+                    Branchen mit überlegener Marktperformance korrespondiert. Die folgende Darstellung soll ein intuitives 
+                    Verständnis für die Komplexität und die Dynamik der Beziehung zwischen ESG-Verpflichtungen und finanzieller 
+                    Rentabilität bieten.
+                </p>
+            </div>
+            <section class="w3-container" id="checkboxes">
+                <h3 class="w3-text-teal">Branchenfilter</h3>
+                <div class="w3-center" id="checkbox-container">
+                    <!-- Checkboxen werden durch d3.js hier eingefügt -->
+                </div>
+            </section>
+            <div class="w3-center" id="scatterplot">
+                <!-- Chart wird durch d3.js hier eingefügt -->
+            </div>
+        </section>
+
+        <!-- Explanation Section -->
+        <section class="w3-container w3-padding-32" id="explanation">
+            <div class="w3-panel w3-leftbar w3-light-grey w3-border-teal">
+                <p><b>Erklärung - was haben wir herausgefunden?</b></p>
+                <p>   
+                Die Analyse der Daten hat eine tendenziell positive Korrelation zwischen dem ESG-Engagement von Unternehmen 
+                und deren finanzieller Performance aufgezeigt. Firmen mit hohen ESG-Werten zeichnen sich häufig durch eine 
+                stärkere Aktienkursentwicklung aus, was darauf hindeutet, dass nachhaltiges Wirtschaften zu ökonomischen 
+                Vorteilen führen kann. Diese Unternehmen managen Risiken effektiver und integrieren soziale sowie ökologische 
+                Herausforderungen in ihre Geschäftsstrategien, was ihnen langfristig zu einem besseren Risikoprofil und einer 
+                höheren Resilienz gegenüber Marktvolatilitäten verhilft.
+                </p>
+                <p>
+                Allerdings ist die Beziehung zwischen ESG-Maßnahmen und finanzieller Leistung komplex und von vielfältigen 
+                Faktoren abhängig. Während die generelle Tendenz auf einen positiven Zusammenhang hindeutet, sind Ausnahmen 
+                und kurzfristige Abweichungen möglich. Langzeitstudien sind erforderlich, um die Dynamik zwischen ESG-Praktiken 
+                und Unternehmenserfolg umfassend zu verstehen.
+                </p>
+            </div>
+        </section>
+
+        <!-- Industrie Section -->
+        <section class="w3-container w3-padding-64" id="industrie">
+            <h2 class="w3-text-teal">Industrie</h2>
+            <div class="w3-panel w3-leftbar w3-light-grey w3-border-teal">
+                <p><b>Mitarbeiterzahl pro Industriebereichen</b></p>
+                <p> 
+                    In dem dargestellten Donut-Diagramm wird die Verteilung der Mitarbeiterzahlen über verschiedene Industriezweige 
+                    hinweg visualisiert. Der kreisförmige Graph mit einem Ausschnitt in der Mitte, der an die Form eines Donuts 
+                    erinnert, bietet eine klare und unmittelbare Darstellung der relativen Größenverhältnisse der Belegschaften. 
+                    Jedes Segment des Diagramms repräsentiert einen Industriezweig und ist proportional zur Anzahl der Beschäftigten 
+                    in diesem Sektor. Große Segmente wie jene der Technologie- oder Fertigungsindustrie spiegeln eine hohe Mitarbeiterzahl 
+                    wider, während kleinere Segmente auf Branchen mit geringerer Belegschaft hinweisen. Die Farbgebung unterstützt zusätzlich 
+                    die Unterscheidbarkeit der Sektoren, wodurch ein schnelles Erfassen der Datenstruktur ermöglicht wird. Dieses Diagramm 
+                    dient nicht nur der Veranschaulichung der aktuellen Arbeitsmarktverteilung, sondern kann auch für die Analyse von 
+                    Beschäftigungstrends und die strategische Planung von Ressourcenallokationen in verschiedenen Industriebereichen genutzt werden.
+                </p>
+            </div>
+            <div class="w3-center" id="donut-plot">
+                <!-- Donut plot goes here -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Referenzen Sektion -->
+    <section class="w3-container w3-padding-32 w3-light-grey" id="references">
+        <h2 class="w3-center">Referenzen</h2>
+        <p class="w3-center">Die Informationen für diese Webseite wurden aus den folgenden Quellen bezogen:</p>
+        
+        <ul class="w3-ul w3-card-4 w3-white">
+            <li class="w3-padding-16">
+                <span class="w3-xlarge">Quelle Eins</span><br>
+                <span>Beschreibung der Quelle eins. </span>
+                <a href="http://www.quelle-eins.com" target="_blank" class="w3-text-teal">www.quelle-eins.com</a>
+            </li>
+            <li class="w3-padding-16">
+                <span class="w3-xlarge">Quelle Zwei</span><br>
+                <span>Beschreibung der Quelle zwei. </span>
+                <a href="http://www.quelle-zwei.com" target="_blank" class="w3-text-teal">www.quelle-zwei.com</a>
+            </li>
+            <li class="w3-padding-16">
+                <span class="w3-xlarge">Quelle Drei</span><br>
+                <span>Beschreibung der Quelle drei. </span>
+                <a href="http://www.quelle-drei.com" target="_blank" class="w3-text-teal">www.quelle-drei.com</a>
+            </li>
+            <!-- Weitere Referenzen hinzufügen, falls nötig -->
+        </ul>
+    </section>
+
+        <!-- Footer -->
+        <footer class="w3-container w3-teal w3-center w3-padding-16" id="footer">
+            <div class="w3-medium">
+                <p><b>Gruppe G02</b> - DAVI Modul, HS23</p>
+                <p><i>Robin Matter & Cedric Gisler</i></p>
+                <p>Projekt auf <a href="https://github.com/lCedl/g02" target="_blank">https://github.com/lCedl/g02</a></p>
+            </div>
+        </footer> 
+
+<script src="js/script.js"></script>
 </body>
 </html>
