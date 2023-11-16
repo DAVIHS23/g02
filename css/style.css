@@ -1,70 +1,99 @@
-
 .whole-page {
-    max-width: 1200px;
-    margin: auto;
-    padding: 0;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0;
 }
 
 #rankings {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
 }
 
 /* Stil für die Scrollbars in den Ranglistentabellen */
-.ranking, .w3-responsive {
-    max-height: 600px; /* Passen Sie die max. Höhe nach Bedarf an */
-    overflow-y: auto; /* Fügt eine vertikale Scrollbar hinzu, wenn nötig */
-    margin-bottom: 16px; /* Für etwas Abstand nach unten */
+.ranking,
+.w3-responsive {
+  max-height: 600px;
+  /* Passen Sie die max. Höhe nach Bedarf an */
+  overflow-y: auto;
+  /* Fügt eine vertikale Scrollbar hinzu, wenn nötig */
+  margin-bottom: 16px;
+  /* Für etwas Abstand nach unten */
 }
 
 /* Stellen Sie sicher, dass Tabellenköpfe sichtbar bleiben */
-.ranking, thead, tr, th {
-    position: sticky;
-    top: 0;
-    background-color: #f1f1f1; /* Hintergrundfarbe der Kopfzeile */
+.ranking,
+thead,
+tr,
+th {
+  position: sticky;
+  top: 0;
+  background-color: #f1f1f1;
+  /* Hintergrundfarbe der Kopfzeile */
 }
 
 #checkbox-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px; /* oder den gewünschten Abstand zwischen den Checkboxen */
-  }
-  
-  .checkbox-group {
-    flex-basis: calc(33% - 10px); /* passt die Breite für 3 pro Zeile an, abzüglich der Lücke */
-    display: flex;
-    align-items: center; /* Zentriert das Label vertikal mit der Checkbox */
-  }
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  /* oder den gewünschten Abstand zwischen den Checkboxen */
+}
 
-  .checkbox-label {
-    margin-left: 5px;
-  }
+.checkbox-group {
+  flex-basis: calc(33% - 10px);
+  /* passt die Breite für 3 pro Zeile an, abzüglich der Lücke */
+  display: flex;
+  align-items: center;
+  /* Zentriert das Label vertikal mit der Checkbox */
+}
 
-    /* Create a Parallax Effect */
-    .bgimg-1, .bgimg-2, .navbarbg {
-    background-size: cover; /* Sorgt dafür, dass das Bild den Container vollständig abdeckt */
-    background-position: center; /* Zentriert das Bild im Container */
-    background-repeat: no-repeat; /* Verhindert das Wiederholen des Bildes */
-    background-attachment: fixed; /* Das Bild bleibt beim Scrollen an der gleichen Stelle */
-        
+.checkbox-label {
+  margin-left: 5px;
+}
 
-    height: 100vh; /* Setzt die Höhe auf 100% der Ansichtshöhe (viewport height) */
-    width: 100vw; /* Setzt die Breite auf 100% der Ansichtsbreite (viewport width) */
-    }
+/* Create a Parallax Effect */
+.bgimg-1,
+.bgimg-2,
+.navbarbg {
+  background-size: cover;
+  /* Sorgt dafür, dass das Bild den Container vollständig abdeckt */
+  background-position: center;
+  /* Zentriert das Bild im Container */
+  background-repeat: no-repeat;
+  /* Verhindert das Wiederholen des Bildes */
+  background-attachment: fixed;
+  /* Das Bild bleibt beim Scrollen an der gleichen Stelle */
 
 
-  .bgimg-1 {
-    background-image: url('/image/image3.png');
-    min-height: 100%;
-  }
+  height: 100vh;
+  /* Setzt die Höhe auf 100% der Ansichtshöhe (viewport height) */
+  width: 100vw;
+  /* Setzt die Breite auf 100% der Ansichtsbreite (viewport width) */
+}
 
-  .w3-bar .w3-bar-item:hover {
-    background-color: teal !important; /* Setzt den Hintergrund auf Teal beim Hover */
-    color: white !important; /* Setzt die Textfarbe auf Weiß beim Hover */
+
+.bgimg-1 {
+  background-image: url('/image/image3.png');
+  min-height: 100%;
+}
+
+.w3-bar .w3-bar-item:hover {
+  background-color: teal !important;
+  /* Setzt den Hintergrund auf Teal beim Hover */
+  color: white !important;
+  /* Setzt die Textfarbe auf Weiß beim Hover */
 }
 
 @keyframes opac {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+#donut-legend div {
+  font-size: 12px; 
 }
