@@ -73,7 +73,7 @@ th {
 
 
 .bgimg-1 {
-  background-image: url('./image/image3.png');
+  background-image: url('../image/image3.png');
   min-height: 100%;
 }
 
