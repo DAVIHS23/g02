@@ -1,5 +1,5 @@
 // Pfad zur CSV-Datei
-const csvFilePath = 'data/davi_data.csv';
+const csvFilePath = './data/davi_data.csv';
 
 
 // Laden der CSV-Datei und dann Ausführung des angegebenen Codes
