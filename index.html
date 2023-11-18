@@ -12,16 +12,15 @@
 
 <body>
 
-
     <!-- NAVIGATION BAR -->
     <section class="w3-top w3-teal">
         <nav class="w3-bar" id="myNavbar">
-            <a href="#start" class="w3-bar-item w3-button w3-text-white">Home</a>
+            <a href="#start" class="w3-bar-item w3-button w3-text-white">Start</a>
             <a href="#introduction" class="w3-bar-item w3-button w3-text-white">Einführung</a>
-            <a href="#rankings" class="w3-bar-item w3-button w3-text-white">Ranking</a>
             <a href="#time-series" class="w3-bar-item w3-button w3-text-white">Zeitreihe</a>
-            <a href="#interactive" class="w3-bar-item w3-button w3-text-white">Industrie</a>
-            <a href="#explanation" class="w3-bar-item w3-button w3-text-white">Erklärung</a>
+            <a href="#radarChartBeschreibung" class="w3-bar-item w3-button w3-text-white">Boxplots</a>
+            <a href="#industrie" class="w3-bar-item w3-button w3-text-white">Industrie</a>
+            <a href="#rankings" class="w3-bar-item w3-button w3-text-white">Rankings</a>
             <a href="#references" class="w3-bar-item w3-button w3-text-white">Referenzen</a>
             <a href="#footer" class="w3-bar-item w3-button w3-text-white">Team</a>
         </nav>
@@ -38,35 +37,102 @@
         <!-- Introduction Section -->
         <section class="w3-container w3-padding-32" id="introduction">
             <div class="w3-panel w3-leftbar w3-light-grey w3-border-teal">
-                <p><b>TITEL</b></p>
+                <p><b>First View</b></p>
                 <p>
-                    Die Gesellschaft versucht immer mehr umweltbewusst und sozial zu leben. Doch was ist wenn es zum
-                    Geld
-                    investieren kommt, sollte man dann doch lieber auf die alte Börsenweisheit hören: «Beim Investieren
-                    seine Emotionen und politischen Einstellungen aussen vor zulassen.»
-                    Es stellt sich also die Frage, bedeutet es grosse Rendite Einbussen, wenn man sein Umwelt- und
-                    Sozial-Bewusstsein an die Börse bringt?
-                    In den letzten Jahren drängen sich immer mehr Möglichkeiten des nachhaltig und sozialen investieren
-                    auf
-                    den Markt. Solche Möglichkeiten nennen sich ESG Investitionen. Dabei wird die Investition zum
-                    Beispiel
-                    bei Aktien die zu investierende Firma von verschiedenen Institutionen nach Environment, Social and
-                    Governance bewertet. Dabei ist es wichtig zu beachten das sich die ESG Scores von bewertenden
-                    Institution zu der nächsten unterscheiden kann.
-                    Um der Frage auf den Grundzugehen schauen wir genauer auf den S&P500 einer der beliebtesten
-                    Aktienindexe
-                    seit Generation. Dieser enthält die 500 wertvollsten Firmen der USA. Um eine aussagekräftige Antwort
-                    auf
-                    die Forschungsfrage zu bekommen suchen wir nach einer Korrelation zwischen Firmenwert und ESG Score.
-                    Wenn die Firmen mit gutem (hohen) ESG Score im durchschnitt mehr Wert sind als die mit schlechterem
-                    ESG
-                    Score so würde das stark für ESG Investitionen sprechen.
+                    Gibt es eine Korrelation? und was mach das mit den Daten?
+                </p>
+            </div>
+            <div class="w3-panel" id="scatterplot-first-blackandwhite">
+                <!-- Black and white Scatterplott-->
+            </div>
+        </section>
+
+
+        <!--Industrie Scatterplot der Daten -->
+        <section class="w3-container w3-padding-32" id="time-series">
+            <div class="w3-panel w3-leftbar w3-light-grey w3-border-teal">
+                <p><b>Korrelation??</b></p>
+                <p>
+                    Gibt Keine Korrelation - aber schau doch mal die einzelnen Branchen an:
+                </p>
+            </div>
+            <section class="w3-container" id="checkboxes">
+                <h3 class="w3-text-teal">Branchenfilter</h3>
+                <div class="w3-center" id="checkbox-container">
+                    <!-- Checkboxen werden durch d3.js hier eingefügt -->
+                </div>
+            </section>
+            <div class="w3-center" id="scatterplot">
+                <!-- Chart wird durch d3.js hier eingefügt -->
+            </div>
+            <div class="w3-panel w3-leftbar w3-light-grey w3-border-teal">
+                <p><b>Erklärung - was haben wir herausgefunden?</b></p>
+                <p>
+                    Was haben wir nun herausgefunden? Es gibt zwar keine Korrelation aber für die
+                    einzelnen Industrien gibt es eine Cluster bildung.
                 </p>
             </div>
         </section>
 
-        <!-- Rankings Section -->
-        <section class="w3-row-padding w3-padding-32" id="rankings">
+        <!--Diffrenzes in the diffrent Scores? -->
+        <section class="w3-container w3-padding-64" id="radarChartBeschreibung">
+            <h2 class="w3-text-teal">Diffrent Scores</h2>
+            <div class="w3-panel w3-leftbar w3-light-grey w3-border-teal">
+                <p><b>Und nun die verschiedenen Boxplots</b></p>
+                <p>
+                    Da wir eine Cluster bildung haben für die verschiedenen Industrien, lasst uns diese doch
+                    genauer anschauen
+                </p>
+            </div>
+            <div class="w3-container w3-center" id="boxplot-environment">
+                <!-- BoxPlot goes here environment -->
+            </div>
+            <div class="w3-container w3-center" id="boxplot-governance">
+                <!-- BoxPlot goes here governance -->
+            </div>
+            <div class="w3-container w3-center" id="boxplot-social">
+                <!-- BoxPlot goes here social -->
+            </div>
+            <div class="w3-panel w3-leftbar w3-light-grey w3-border-teal">
+                <p><b>Erklärung zu den Boxplots</b></p>
+                <p>
+                    Was sagen die verschiedenen Boxplots aus?
+                    Man sieht das sich die verschiedenen Industries auf einzelne Bereiche des
+                    Scors beschränken oder speziell Wert legen.
+                </p>
+            </div>
+        </section>
+
+        <!-- Industrie Section -->
+        <section class="w3-container w3-padding-64" id="industrie">
+            <h2 class="w3-text-teal">Industrie</h2>
+            <div class="w3-panel w3-leftbar w3-light-grey w3-border-teal">
+                <p><b>Mitarbeiterzahl pro Industriebereichen</b></p>
+                <p>
+                    Wie gross sind die einzelnen Branchen vertreten?
+                </p>
+            </div>
+            <div class="w3-row">
+                <div class="w3-col s8" id="donut-plot">
+                    <!-- Donut plot goes here -->
+                </div>
+                <div class="w3-col s4" id="donut-legend">
+                    <!-- For the legend ... -->
+                </div>
+        </section>
+    </div>
+
+    <!-- Rankings Section -->
+    <section class="w3-row-padding w3-padding-32" id="rankings">
+        <div class="w3-container" id="ranking-explaning">
+            <h2 class="w3-text-teal">Nun alle Aufgelistet</h2>
+            <div class="w3-panel w3-leftbar w3-light-grey w3-border-teal">
+                <p><b>Welche Firma ist nun welcher Punkt</b></p>
+                <p>
+                    Anschliessend ein Ranking in dem man die einzelnen Firmen suchen kann.
+                    Sie sind dementsprechend Sortiert
+                </p>
+            </div>
             <div class="w3-half w3-container" id="esg-ranking">
                 <h2 class="w3-text-teal">ESG Index Ranking</h2>
                 <div class="w3-responsive" id="esg-table">
@@ -79,102 +145,8 @@
                     <!-- Tabelle wird durch d3.js hier eingefügt -->
                 </div>
             </div>
-        </section>
+    </section>
 
-        <!-- Scatterplot der Daten -->
-        <section class="w3-container w3-padding-32" id="time-series">
-            <div class="w3-panel w3-leftbar w3-light-grey w3-border-teal">
-                <p><b>Korrelation von ESG-Score und Aktienwert im Branchenvergleich</b></p>
-                <p>
-                    In der visuellen Analyse unseres Datensatzes präsentieren wir einen Scatterplot, der die Beziehung
-                    zwischen dem ESX Score, der den ESG-Index eines Unternehmens repräsentiert, und der
-                    Aktienkursperformance,
-                    gemessen am Wert der Aktie, aufzeigt. Dieser Plot gruppiert die Datenpunkte zusätzlich nach
-                    Branchenzugehörigkeit, um sektorspezifische Muster zu erkennen. Ziel ist es, visuelle Hinweise auf
-                    mögliche Korrelationen zu identifizieren und zu untersuchen, ob ESG-Führerschaft innerhalb
-                    verschiedener
-                    Branchen mit überlegener Marktperformance korrespondiert. Die folgende Darstellung soll ein
-                    intuitives
-                    Verständnis für die Komplexität und die Dynamik der Beziehung zwischen ESG-Verpflichtungen und
-                    finanzieller
-                    Rentabilität bieten.
-                </p>
-            </div>
-            <section class="w3-container" id="checkboxes">
-                <h3 class="w3-text-teal">Branchenfilter</h3>
-                <div class="w3-center" id="checkbox-container">
-                    <!-- Checkboxen werden durch d3.js hier eingefügt -->
-                </div>
-            </section>
-            <div class="w3-center" id="scatterplot">
-                <!-- Chart wird durch d3.js hier eingefügt -->
-            </div>
-        </section>
-
-        <!-- Explanation Section -->
-        <section class="w3-container w3-padding-32" id="explanation">
-            <div class="w3-panel w3-leftbar w3-light-grey w3-border-teal">
-                <p><b>Erklärung - was haben wir herausgefunden?</b></p>
-                <p>
-                    Die Analyse der Daten hat eine tendenziell positive Korrelation zwischen dem ESG-Engagement von
-                    Unternehmen
-                    und deren finanzieller Performance aufgezeigt. Firmen mit hohen ESG-Werten zeichnen sich häufig
-                    durch eine
-                    stärkere Aktienkursentwicklung aus, was darauf hindeutet, dass nachhaltiges Wirtschaften zu
-                    ökonomischen
-                    Vorteilen führen kann. Diese Unternehmen managen Risiken effektiver und integrieren soziale sowie
-                    ökologische
-                    Herausforderungen in ihre Geschäftsstrategien, was ihnen langfristig zu einem besseren Risikoprofil
-                    und einer
-                    höheren Resilienz gegenüber Marktvolatilitäten verhilft.
-                </p>
-                <p>
-                    Allerdings ist die Beziehung zwischen ESG-Maßnahmen und finanzieller Leistung komplex und von
-                    vielfältigen
-                    Faktoren abhängig. Während die generelle Tendenz auf einen positiven Zusammenhang hindeutet, sind
-                    Ausnahmen
-                    und kurzfristige Abweichungen möglich. Langzeitstudien sind erforderlich, um die Dynamik zwischen
-                    ESG-Praktiken
-                    und Unternehmenserfolg umfassend zu verstehen.
-                </p>
-            </div>
-        </section>
-
-        <!-- Industrie Section -->
-        <section class="w3-container w3-padding-64" id="industrie">
-            <h2 class="w3-text-teal">Industrie</h2>
-            <div class="w3-panel w3-leftbar w3-light-grey w3-border-teal">
-                <p><b>Mitarbeiterzahl pro Industriebereichen</b></p>
-                <p>
-                    In dem dargestellten Donut-Diagramm wird die Verteilung der Mitarbeiterzahlen über verschiedene
-                    Industriezweige
-                    hinweg visualisiert. Der kreisförmige Graph mit einem Ausschnitt in der Mitte, der an die Form eines
-                    Donuts
-                    erinnert, bietet eine klare und unmittelbare Darstellung der relativen Größenverhältnisse der
-                    Belegschaften.
-                    Jedes Segment des Diagramms repräsentiert einen Industriezweig und ist proportional zur Anzahl der
-                    Beschäftigten
-                    in diesem Sektor. Große Segmente wie jene der Technologie- oder Fertigungsindustrie spiegeln eine
-                    hohe Mitarbeiterzahl
-                    wider, während kleinere Segmente auf Branchen mit geringerer Belegschaft hinweisen. Die Farbgebung
-                    unterstützt zusätzlich
-                    die Unterscheidbarkeit der Sektoren, wodurch ein schnelles Erfassen der Datenstruktur ermöglicht
-                    wird. Dieses Diagramm
-                    dient nicht nur der Veranschaulichung der aktuellen Arbeitsmarktverteilung, sondern kann auch für
-                    die Analyse von
-                    Beschäftigungstrends und die strategische Planung von Ressourcenallokationen in verschiedenen
-                    Industriebereichen genutzt werden.
-                </p>
-            </div>
-            <div class="w3-row">
-                <div class="w3-col s8" id="donut-plot">
-                    <!-- Donut plot goes here -->
-                </div>
-                <div class="w3-col s4" id="donut-legend">
-                    <!-- For the legend ... -->
-            </div>
-        </section>
-    </div>
 
     <!-- Referenzen Sektion -->
     <section class="w3-container w3-padding-32 w3-light-grey" id="references">
