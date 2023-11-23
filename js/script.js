@@ -1,7 +1,6 @@
 // Pfad zur CSV-Datei
 const csvFilePath = 'https://lcedl.github.io/g02/data/davi_data.csv';
 
-
 // Laden der CSV-Datei und dann Ausführung des angegebenen Codes
 d3.csv(csvFilePath).then(data => {
   //Frist Scatterplot Black and white
