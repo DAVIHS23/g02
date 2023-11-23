@@ -1,5 +1,5 @@
 // Pfad zur CSV-Datei
-const csvFilePath = '../data/davi_data.csv';
+const csvFilePath = 'https://lcedl.github.io/g02/data/davi_data.csv';
 
 
 // Laden der CSV-Datei und dann Ausführung des angegebenen Codes
