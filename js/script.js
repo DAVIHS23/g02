@@ -1,25 +1,39 @@
 // Pfad zur CSV-Datei
 const csvFilePath = 'https://lcedl.github.io/g02/data/DAVI_data.csv';
 
+// Farben der Scala
+const myColors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf', '#aec7e8'];
+const globalColorScale = d3.scaleOrdinal(myColors);
+
+
 // Laden der CSV-Datei und dann Ausführung des angegebenen Codes
 d3.csv(csvFilePath).then(data => {
+
+  // Filter out rows with empty 'esg_score' before sorting and creating the table
+  const filteredData = data.filter(row => row.esg_score !== null && row.esg_score !== undefined && row.esg_score !== '');
+
   //Frist Scatterplot Black and white
-  createScatterplotblackandwhite("#scatterplot-first-blackandwhite", data, "esg_score", "market_capitalization");
+  createScatterplotblackandwhite("#scatterplot-first-blackandwhite", filteredData, "esg_score", "market_capitalization");
+
 
   // Nach der Datenkonvertierung, erstelle die Ranglisten
-  createRanking('#esg-table', data.sort((a, b) => b.esg_score - a.esg_score), 'esg_score');
-  createRanking('#market_capitalization-table', data.sort((a, b) => b.market_capitalization - a.market_capitalization), 'market_capitalization');
+  //createRanking('#esg-table', data.sort((a, b) => b.esg_score - a.esg_score), 'esg_score'); //Absteigend sortiert
+  createRanking('#esg-table', filteredData.sort((a, b) => a.esg_score - b.esg_score), 'esg_score'); // Aufsteigend sortiert
+  createRanking('#market_capitalization-table', filteredData.sort((a, b) => b.market_capitalization - a.market_capitalization), 'market_capitalization');
 
   // Erstellen des Streudiagramms mit CheckboxFen
-  createScatterplotWithCheckboxes('#scatterplot', data, 'esg_score', 'market_capitalization', 'industry');
+  createScatterplotWithCheckboxes('#scatterplot', filteredData, 'esg_score', 'market_capitalization', 'industry');
 
   // Erstelle die Boxplots (environment_score, governance_score, social_score)
-  createBoxplot('#boxplot-environment', data, 'environment_score');
-  createBoxplot('#boxplot-governance', data, 'governance_score');
-  createBoxplot('#boxplot-social', data, 'social_score');
+  createBoxplot('#boxplot-environment', filteredData, 'environment_score');
+  createBoxplot('#boxplot-governance', filteredData, 'governance_score');
+  createBoxplot('#boxplot-social', filteredData, 'social_score');
+
+  //Erstelle die MultiSetBar Chart
+  createMultiSetBarChart('#barcar-e3score', filteredData)
 
   // Erstellen des Donut-Diagramms
-  const preparedData = prepareDonutData(data, 'industry', 'full_time_employees');
+  const preparedData = prepareDonutData(filteredData, 'industry', 'full_time_employees');
   createDonutChart('#donut-plot', preparedData);
 });
 
@@ -77,7 +91,6 @@ function createScatterplotblackandwhite(selector, data, xProp, yProp) {
     .attr("cx", d => x(d[xProp]))
     .attr("cy", d => y(d[yProp]))
     .style("fill", "black"); // Alle Punkte in Schwarz
-
 }
 
 
@@ -127,7 +140,7 @@ function createScatterplotWithCheckboxes(selector, data, xProp, yProp, industryP
 
 function createScatterplot(svg, data, width, height, xProp, yProp, industryProp) {
   // Erstellen einer Farbskala für verschiedene Industrien
-  const color = d3.scaleOrdinal(d3.schemeCategory10)
+  const color = globalColorScale
     .domain(data.map(d => d[industryProp]));
 
   const margin = { top: 20, right: 20, bottom: 60, left: 70 }
@@ -230,6 +243,120 @@ function addLegendScatterplot(svg, data, color, width) {
   });
 }
 
+function createMultiSetBarChart(selector, data) {
+  // Dimensionen und Margen des Diagramms
+  const margin = { top: 20, right: 20, bottom: 60, left: 70 },
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+  // Anhängen des svg-Objekts an das angegebene DOM-Element
+  const svg = d3.select(selector)
+    .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", `translate(${margin.left},${margin.top})`);
+
+  // Berechnung der durchschnittlichen Scores mit d3.rollup
+  const industryScores = Array.from(d3.rollup(data, v => ({
+    environment: d3.mean(v, d => d.environment_score),
+    governance: d3.mean(v, d => d.governance_score),
+    social: d3.mean(v, d => d.social_score)
+  }), d => d.industry)
+  ).map(([industry, scores]) => ({ industry, ...scores }));
+
+  // X-Achse
+  const x = d3.scaleBand()
+    .range([0, width])
+    .domain(industryScores.map(d => d.industry))
+    .padding(0.2);
+  svg.append("g")
+    .attr("transform", `translate(0,${height})`)
+    .call(d3.axisBottom(x))
+    .selectAll("text")
+    .attr("transform", "translate(-10,0)rotate(-45)")
+    .style("text-anchor", "end");
+
+  // Y-Achse
+  const y = d3.scaleLinear()
+    .domain([0, d3.max(industryScores, d => Math.max(d.environment, d.governance, d.social))])
+    .range([height, 0]);
+  svg.append("g")
+    .call(d3.axisLeft(y));
+
+  // Funktion, um die Position der Balken zu berechnen
+  const barWidth = x.bandwidth() / 3;
+  const calculateBarX = (d, index) => x(d.industry) + index * barWidth;
+
+  // Balken für environment_score
+  svg.selectAll(".bar.environment")
+    .data(industryScores)
+    .enter()
+    .append("rect")
+    .attr("class", "bar environment")
+    .attr("x", d => calculateBarX(d, 0))
+    .attr("y", d => y(d.environment))
+    .attr("width", barWidth)
+    .attr("height", d => height - y(d.environment))
+    .attr("fill", "#1f77b4");
+
+  // Balken für governance_score
+  svg.selectAll(".bar.governance")
+    .data(industryScores)
+    .enter()
+    .append("rect")
+    .attr("class", "bar governance")
+    .attr("x", d => calculateBarX(d, 1))
+    .attr("y", d => y(d.governance))
+    .attr("width", barWidth)
+    .attr("height", d => height - y(d.governance))
+    .attr("fill", "#ff7f0e");
+
+  // Balken für social_score
+  svg.selectAll(".bar.social")
+    .data(industryScores)
+    .enter()
+    .append("rect")
+    .attr("class", "bar social")
+    .attr("x", d => calculateBarX(d, 2))
+    .attr("y", d => y(d.social))
+    .attr("width", barWidth)
+    .attr("height", d => height - y(d.social))
+    .attr("fill", "#2ca02c");
+
+  // Legenden-Daten
+  const legendData = [
+    { label: "Environment Score", color: "#1f77b4" },
+    { label: "Governance Score", color: "#ff7f0e" },
+    { label: "Social Score", color: "#2ca02c" }
+  ];
+
+  // Hinzufügen der Legende
+  const legend = svg.append("g")
+    .attr("font-family", "sans-serif")
+    .attr("font-size", 10)
+    .attr("text-anchor", "end")
+    .selectAll("g")
+    .data(legendData)
+    .enter().append("g")
+    .attr("transform", (d, i) => `translate(0,${i * 20})`);
+
+  // Rechtecke für die Legende
+  legend.append("rect")
+    .attr("x", width - 19)
+    .attr("width", 19)
+    .attr("height", 19)
+    .attr("fill", d => d.color);
+
+  // Text für die Legende
+  legend.append("text")
+    .attr("x", width - 24)
+    .attr("y", 9.5)
+    .attr("dy", "0.32em")
+    .text(d => d.label);
+
+}
+
 // Funktion zum Vorbereiten der Daten für das Donut-Diagramm
 function prepareDonutData(data, industryProp, employeeSizeProp) {
   // Verwenden von d3.rollup, um die Daten zu aggregieren
@@ -259,7 +386,7 @@ function createDonutChart(selector, data) {
     .attr("transform", `translate(${width / 2}, ${height / 2})`);
 
   // Die Farbskala definieren
-  const color = d3.scaleOrdinal(d3.schemeCategory10);
+  const color = globalColorScale;
 
   // Daten für das Diagramm vorbereiten
   const pie = d3.pie()
@@ -320,9 +447,7 @@ function createBoxplot(selector, data, scoreType) {
   let groupedData = d3.group(data, d => d.industry);
 
   // Erstellen einer ordinalen Farbskala
-  let colorScale = d3.scaleOrdinal()
-    .domain(Array.from(groupedData.keys()))
-    .range(d3.schemeTableau10);
+  let colorScale = globalColorScale.domain(Array.from(groupedData.keys()));
 
   // Erstellen der X-Skala
   let x = d3.scaleBand()
@@ -382,23 +507,23 @@ function createBoxplot(selector, data, scoreType) {
       .attr("y2", y(median))
       .attr("stroke", "black");
 
-    /*
-  // Unterer Whisker
-  svg.append("line")
-    .attr("x1", x(groupName))
-    .attr("x2", x(groupName))
-    .attr("y1", y(min))
-    .attr("y2", y(q1))
-    .attr("stroke", "black");
+      /*
+    // Unterer Whisker
+    svg.append("line")
+      .attr("x1", x(groupName))
+      .attr("x2", x(groupName))
+      .attr("y1", y(min))
+      .attr("y2", y(q1))
+      .attr("stroke", "black");
 
-  // Oberer Whisker
-  svg.append("line")
-    .attr("x1", x(groupName))
-    .attr("x2", x(groupName))
-    .attr("y1", y(max))
-    .attr("y2", y(q3))
-    .attr("stroke", "black");
-*/
+    // Oberer Whisker
+    svg.append("line")
+      .attr("x1", x(groupName))
+      .attr("x2", x(groupName))
+      .attr("y1", y(max))
+      .attr("y2", y(q3))
+      .attr("stroke", "black");
+  */
 
     // Ausreißer
     outliers.forEach(d => {

@@ -13,12 +13,12 @@
 <body>
 
     <!-- NAVIGATION BAR -->
-    <section class="w3-top w3-teal">
+    <section class="w3-top w3-teal w3-center">
         <nav class="w3-bar" id="myNavbar">
             <a href="#start" class="w3-bar-item w3-button w3-text-white">Start</a>
             <a href="#introduction" class="w3-bar-item w3-button w3-text-white">Einführung</a>
-            <a href="#time-series" class="w3-bar-item w3-button w3-text-white">Zeitreihe</a>
-            <a href="#radarChartBeschreibung" class="w3-bar-item w3-button w3-text-white">Boxplots</a>
+            <a href="#branche" class="w3-bar-item w3-button w3-text-white">Branche</a>
+            <a href="#radarChartBeschreibung" class="w3-bar-item w3-button w3-text-white">Diffrent Scores</a>
             <a href="#industrie" class="w3-bar-item w3-button w3-text-white">Industrie</a>
             <a href="#rankings" class="w3-bar-item w3-button w3-text-white">Rankings</a>
             <a href="#references" class="w3-bar-item w3-button w3-text-white">Referenzen</a>
@@ -39,16 +39,28 @@
             <div class="w3-panel w3-leftbar w3-light-grey w3-border-teal">
                 <p><b>First View</b></p>
                 <p>
-                    In der heutigen Zeit ist der Umwelt- und Sozialgedanke so stark wie noch nie, zu dem hat die Börse vorallem für junge Leute an attraktivität gewonnen.
-                    Ein gutes Beispiel der des Zeitgeistes ist die imiaginäre Person Lisa. Für sie sind soziale wie auch Umweltthemen von zentraler Bedeutung. Viele Teile
-                    ihres Lebens hat sie so angepasst um ihren Werten möglichst gerecht zu werden. Lisa ist nun interssiert ein Teil ihres ersparten an der Börse anzulegen, um
-                    sich etwas für ihre Zukunft aufzubauen. Die Entscheidung in was man investieren sollte war schon immer eine schwierige Frage.
-                    Für Lisa kommt bei dieser Frage eine weitere Fasette dazu. Sie will zwar eine gute Rendite, doch nicht auf Kosten ihrer Moral.
-                    Denn ihr ist bewusst das das Geld was sie in die jeweiligen Firme investiert den Firmen ermöglicht mehr von dem zutun was sie bereit machen.
-                    Mit den handlungen vieler Firmen ist sie nicht einverstanden und möchte diese auf keinen Fall unterstützen.
-                    Für Investoren wie Lisa gibt es heutzutage Organisationen die Firman auf Umwelt (Environment), Soziales (Social) und Führung (Governance) prüfen und diesen basierend darauf eine Punkt Zahl (ESG Score geben).
-                    Lisa gedenkt darum nur in Firmen mit einem möglichst guten also tiefen ESG Score zu investieren, doch die Frage bleibt offen wird Lisa wahrscheinlich Performanceverluste in Kauf nehmen müssen?
-                    Um dem auf den Grund zu gehen schauen wir uns die Firmen des S&P500 an also die Wertvollsten Firmen der USA. Unten zu sehen sind die Firmen als Punkte nach ESG score (tief gut/ hoch schlecht) und Marktkapitalisierung.
+                    In der heutigen Zeit ist der Umwelt- und Sozialgedanke so stark wie noch nie, zu dem hat die Börse
+                    vorallem für junge Leute an attraktivität gewonnen.
+                    Ein gutes Beispiel der des Zeitgeistes ist die imiaginäre Person Lisa. Für sie sind soziale wie auch
+                    Umweltthemen von zentraler Bedeutung. Viele Teile
+                    ihres Lebens hat sie so angepasst um ihren Werten möglichst gerecht zu werden. Lisa ist nun
+                    interssiert ein Teil ihres ersparten an der Börse anzulegen, um
+                    sich etwas für ihre Zukunft aufzubauen. Die Entscheidung in was man investieren sollte war schon
+                    immer eine schwierige Frage.
+                    Für Lisa kommt bei dieser Frage eine weitere Fasette dazu. Sie will zwar eine gute Rendite, doch
+                    nicht auf Kosten ihrer Moral.
+                    Denn ihr ist bewusst das das Geld was sie in die jeweiligen Firme investiert den Firmen ermöglicht
+                    mehr von dem zutun was sie bereit machen.
+                    Mit den handlungen vieler Firmen ist sie nicht einverstanden und möchte diese auf keinen Fall
+                    unterstützen.
+                    Für Investoren wie Lisa gibt es heutzutage Organisationen die Firman auf Umwelt (Environment),
+                    Soziales (Social) und Führung (Governance) prüfen und diesen basierend darauf eine Punkt Zahl (ESG
+                    Score geben).
+                    Lisa gedenkt darum nur in Firmen mit einem möglichst guten also tiefen ESG Score zu investieren,
+                    doch die Frage bleibt offen wird Lisa wahrscheinlich Performanceverluste in Kauf nehmen müssen?
+                    Um dem auf den Grund zu gehen schauen wir uns die Firmen des S&P500 an also die Wertvollsten Firmen
+                    der USA. Unten zu sehen sind die Firmen als Punkte nach ESG score (tief gut/ hoch schlecht) und
+                    Marktkapitalisierung.
                     (gehandelter Börsenwert).
 
                     Gibt es eine Korrelation? und was mach das mit den Daten?
@@ -61,13 +73,16 @@
 
 
         <!--Industrie Scatterplot der Daten -->
-        <section class="w3-container w3-padding-32" id="time-series">
+        <section class="w3-container w3-padding-32" id="branche">
             <div class="w3-panel w3-leftbar w3-light-grey w3-border-teal">
                 <p><b>Korrelation??</b></p>
                 <p>
-                    In der obigen Grafik ist ersichtlich dass für die S&P500 Firmen zwischen ESG Score und Marktkapitalisierung/Firmenwert keine korrelation besteht.
-                    Das bedeutet Lisa sollte nicht bessere Gewinne durch Firmen mit hohem ESG Score erwarten, doch schlechter werden sie wohl auch nicht ausfallen.
-                    Eine heute sehr bekannte Investitions art ist das kaufen von ETF bei dem man sich auf einmal in viele Firmen einkauft. Dabei werden oft zum Beispeil Firmen 
+                    In der obigen Grafik ist ersichtlich dass für die S&P500 Firmen zwischen ESG Score und
+                    Marktkapitalisierung/Firmenwert keine korrelation besteht.
+                    Das bedeutet Lisa sollte nicht bessere Gewinne durch Firmen mit hohem ESG Score erwarten, doch
+                    schlechter werden sie wohl auch nicht ausfallen.
+                    Eine heute sehr bekannte Investitions art ist das kaufen von ETF bei dem man sich auf einmal in
+                    viele Firmen einkauft. Dabei werden oft zum Beispeil Firmen
                     in Branchen unterteilt. Es stellt sich für sie also die Fragen welche Branchen ETF stehen ihr offen.
                     Wie unterscheiden sich also die Branchen nach ESG?
 
@@ -86,8 +101,9 @@
             <div class="w3-panel w3-leftbar w3-light-grey w3-border-teal">
                 <p><b>Erklärung - was haben wir herausgefunden?</b></p>
                 <p>
-                    Wenn man nur gezielte Branchen sich anzeigen lässt wird einem schnell klar das die Firmen inerhalb der verschiedenen Branchen Cluster bilden.
-                    Also ähneln sich die Firmen in Bezug auf ESG und Marktkapitalisierung basierend ihrer Branche. 
+                    Wenn man nur gezielte Branchen sich anzeigen lässt wird einem schnell klar das die Firmen inerhalb
+                    der verschiedenen Branchen Cluster bilden.
+                    Also ähneln sich die Firmen in Bezug auf ESG und Marktkapitalisierung basierend ihrer Branche.
                     Aus den Daten erscheint zum Beispiel Technologie und Immobilien interessante Branchen zu sein.
                     Die Energie-Branche scheint schlechter abzuschneiden.
 
@@ -98,14 +114,17 @@
         </section>
 
         <!--Diffrenzes in the diffrent Scores? -->
-        <section class="w3-container w3-padding-64" id="radarChartBeschreibung">
+        <section class="w3-container w3-padding-32" id="radarChartBeschreibung">
             <h2 class="w3-text-teal">Diffrent Scores</h2>
             <div class="w3-panel w3-leftbar w3-light-grey w3-border-teal">
                 <p><b>Und nun die verschiedenen Boxplots</b></p>
                 <p>
-                    Wie zu beginn erklärt setzt sich der ESG Score aus den 3 Teilen Umwelt (Environment), Soziales (Social) und Führung (Governance) zusammen.
-                    Alo lass und die Branchen in den 3 Facetten anschauen um ein genaueres Bild zu bekommen wieso die Branchen im ESG-Score Abschneiden wie sie es tun.
-                    Der Balken bein halten die grosse Menge der Firmen einer Branche Firmen die stark vom Branchenschnitt abweichen werden als Punkte eingezeichnet.
+                    Wie zu beginn erklärt setzt sich der ESG Score aus den 3 Teilen Umwelt (Environment), Soziales
+                    (Social) und Führung (Governance) zusammen.
+                    Alo lass und die Branchen in den 3 Facetten anschauen um ein genaueres Bild zu bekommen wieso die
+                    Branchen im ESG-Score Abschneiden wie sie es tun.
+                    Der Balken bein halten die grosse Menge der Firmen einer Branche Firmen die stark vom
+                    Branchenschnitt abweichen werden als Punkte eingezeichnet.
 
                     Da wir eine Cluster bildung haben für die verschiedenen Industrien, lasst uns diese doch
                     genauer anschauen
@@ -120,13 +139,17 @@
             <div class="w3-container w3-center" id="boxplot-social">
                 <!-- BoxPlot goes here social -->
             </div>
+
             <div class="w3-panel w3-leftbar w3-light-grey w3-border-teal">
                 <p><b>Erklärung zu den Boxplots</b></p>
                 <p>
-                    Aus den obigen Boxplots lassen sich einige interessante kenntisse gewinnen. So zum Beispiel, dass das Gesundheitswesen erstaunlicherweise einen schlechten social score halt
+                    Aus den obigen Boxplots lassen sich einige interessante kenntisse gewinnen. So zum Beispiel, dass
+                    das Gesundheitswesen erstaunlicherweise einen schlechten social score halt
                     aber als sehr Umweltfreundlich eingestuft wird.
-                    Für Lisa ist dieses Diagramm interessant da sie genauer hinter den ESG Score sieht und damit genauer nach ihren preferenzen invesieren kann.
-                    Angenommen für Lisa ist Umwelt viel wichtiger als die anderen 2 Faktoren, so würde sich der Gesundheitsektor durch diesen zweiten Blich als Interessanter herausstellen als zuvor gedacht.
+                    Für Lisa ist dieses Diagramm interessant da sie genauer hinter den ESG Score sieht und damit genauer
+                    nach ihren preferenzen invesieren kann.
+                    Angenommen für Lisa ist Umwelt viel wichtiger als die anderen 2 Faktoren, so würde sich der
+                    Gesundheitsektor durch diesen zweiten Blich als Interessanter herausstellen als zuvor gedacht.
 
 
                     Was sagen die verschiedenen Boxplots aus?
@@ -134,17 +157,24 @@
                     Scors beschränken oder speziell Wert legen.
                 </p>
             </div>
+            <h2 class="w3-text-teal">Übersicht und Average</h2>
+            <div class="w3-container w3-center" id="barcar-e3score">
+                <!-- Multiset barchart goes her-->
+            </div>
         </section>
 
         <!-- Industrie Section -->
-        <section class="w3-container w3-padding-64" id="industrie">
+        <section class="w3-container w3-padding-32" id="industrie">
             <h2 class="w3-text-teal">Industrie</h2>
             <div class="w3-panel w3-leftbar w3-light-grey w3-border-teal">
                 <p><b>Mitarbeiterzahl pro Industriebereichen</b></p>
                 <p>
-                    Für alle Unternehemen machen die Angestelltenlöhne einen grossen Teil der Kosten aus. Durch investieren in die Unternehmen ist es diesen möglich mehr Arbeitsplätze zu schaffen.
-                    Also trägt auch Lisas Investment zu einem kleinen Teil zu neuen Arbeitsplätzen bei. Nun ist aber nicht jede Branche gleich Personalintensiv.
-                    Das Bedeutet das das gleiche Investment in gewissen Branchen zu mehr Arbeitsplätzen als bei anderen Branchen führt. Einfach gesagt, wie höher der Prozentansatz der Ausgaben Personalkosten sind, 
+                    Für alle Unternehemen machen die Angestelltenlöhne einen grossen Teil der Kosten aus. Durch
+                    investieren in die Unternehmen ist es diesen möglich mehr Arbeitsplätze zu schaffen.
+                    Also trägt auch Lisas Investment zu einem kleinen Teil zu neuen Arbeitsplätzen bei. Nun ist aber
+                    nicht jede Branche gleich Personalintensiv.
+                    Das Bedeutet das das gleiche Investment in gewissen Branchen zu mehr Arbeitsplätzen als bei anderen
+                    Branchen führt. Einfach gesagt, wie höher der Prozentansatz der Ausgaben Personalkosten sind,
                     umso mehr des investierten Geldes landet wieder bei den einfachen Arbeitern.
                     Wie gross sind die einzelnen Branchen vertreten?
                 </p>
@@ -157,35 +187,40 @@
                     <!-- For the legend ... -->
                 </div>
         </section>
+
+        <!-- Rankings Section -->
+        <section class="w3-row-padding w3-padding-32" id="rankings">
+            <div class="w3-container" id="ranking-explaning">
+                <h2 class="w3-text-teal">Ranking</h2>
+                <div class="w3-panel w3-leftbar w3-light-grey w3-border-teal">
+                    <p><b>Welche Firma ist nun welcher Punkt</b></p>
+                    <p>
+                        Lisa und vielleicht auch du hast dich für einige Branchen entschieden, doch möchtest auch einige
+                        einzel Aktien kaufen.
+                        Dafür haben wir den ESG Score wie auch die Marktkapitalisierung aller Firmen des S&P500
+                        aufgelistet.
+
+                        Anschliessend ein Ranking in dem man die einzelnen Firmen suchen kann.
+                        Sie sind dementsprechend Sortiert
+                    </p>
+                </div>
+                <div class="w3-half w3-container" id="esg-ranking">
+                    <h2 class="w3-text-teal">ESG Index Ranking</h2>
+                    <div class="w3-responsive" id="esg-table">
+                        <!-- Tabelle wird durch d3.js hier eingefügt -->
+                    </div>
+                </div>
+                <div class="w3-half w3-container" id="market_capitalization-ranking">
+                    <h2 class="w3-text-teal">Firmenwert Ranking</h2>
+                    <div class="w3-responsive" id="market_capitalization-table">
+                        <!-- Tabelle wird durch d3.js hier eingefügt -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
     </div>
-
-    <!-- Rankings Section -->
-    <section class="w3-row-padding w3-padding-32" id="rankings">
-        <div class="w3-container" id="ranking-explaning">
-            <h2 class="w3-text-teal">Nun alle Aufgelistet</h2>
-            <div class="w3-panel w3-leftbar w3-light-grey w3-border-teal">
-                <p><b>Welche Firma ist nun welcher Punkt</b></p>
-                <p>
-                    Lisa und vielleicht auch du hast dich für einige Branchen entschieden, doch möchtest auch einige einzel Aktien kaufen.
-                    Dafür haben wir den ESG Score wie auch die Marktkapitalisierung aller Firmen des S&P500 aufgelistet.
-
-                    Anschliessend ein Ranking in dem man die einzelnen Firmen suchen kann.
-                    Sie sind dementsprechend Sortiert
-                </p>
-            </div>
-            <div class="w3-half w3-container" id="esg-ranking">
-                <h2 class="w3-text-teal">ESG Index Ranking</h2>
-                <div class="w3-responsive" id="esg-table">
-                    <!-- Tabelle wird durch d3.js hier eingefügt -->
-                </div>
-            </div>
-            <div class="w3-half w3-container" id="market_capitalization-ranking">
-                <h2 class="w3-text-teal">Firmenwert Ranking</h2>
-                <div class="w3-responsive" id="market_capitalization-table">
-                    <!-- Tabelle wird durch d3.js hier eingefügt -->
-                </div>
-            </div>
-    </section>
 
 
     <!-- Referenzen Sektion -->
@@ -195,19 +230,22 @@
 
         <ul class="w3-ul w3-card-4 w3-white">
             <li class="w3-padding-16">
-                <span class="w3-xlarge">Quelle Eins</span><br>
-                <span>Beschreibung der Quelle eins. </span>
-                <a href="https://www.kaggle.com/datasets/pritish509/s-and-p-500-esg-risk-ratings" target="_blank" class="w3-text-teal">www.quelle-eins.com</a>
+                <h3>S&P 500 ESG Risikobewertungen</h3>
+                <p>Dieser Datensatz präsentiert ausschließlich Unternehmen aus dem S&P 500 Index. Forscher, Investoren, Analysten und Politiker können diesen Datensatz nutzen, um Einblicke in die ESG-Performance und Risikoprofile dieser großen Konzerne zu gewinnen. Ob bei der Erforschung von Trends, der Durchführung von ESG-Bewertungen oder der treffsicheren Investitionsentscheidungen, dieser Datensatz dient als wertvolle Ressource, um die Nachhaltigkeits- und Governance-Praktiken von S&P 500 Unternehmen zu verstehen.</p>
+                <p><a href="https://www.kaggle.com/datasets/pritish509/s-and-p-500-esg-risk-ratings" target="_blank"
+                    class="w3-text-teal">www.kaggle.com - Risikobewertungsdaten</a></p>
             </li>
             <li class="w3-padding-16">
-                <span class="w3-xlarge">Quelle Zwei</span><br>
-                <span>Beschreibung der Quelle zwei. </span>
-                <a href="https://www.kaggle.com/datasets/paultimothymooney/stock-market-data" target="_blank" class="w3-text-teal">www.quelle-zwei.com</a>
+                <h3>Aktienmarkt-Daten (NASDAQ, NYSE, S&P500)</h3>
+                <p>Die neuesten Daten zu den täglichen Aktienmarktpreisen, einschließlich Datum, Handelsvolumen, Höchst- und Tiefstwerte sowie Schlusskurse für an der NASDAQ, S&P500 und NYSE gelistete Unternehmen. Wöchentlich aktualisiert mit Einblicken in Markttrends und Unternehmensleistung.</p>
+                <p><a href="https://www.kaggle.com/datasets/paultimothymooney/stock-market-data" target="_blank"
+                    class="w3-text-teal">www.kaggle.com - Aktienmarkt-Daten</a></p>
             </li>
             <li class="w3-padding-16">
-                <span class="w3-xlarge">Quelle Drei</span><br>
-                <span>Beschreibung der Quelle drei. </span>
-                <a href="http://www.quelle-drei.com" target="_blank" class="w3-text-teal">www.quelle-drei.com</a>
+                <h3>ChatGPT</h3>
+                <p>Ist ein fortschrittliches KI-Textmodell, entwickelt von OpenAI. Als GPT-3.5-basierte KI kann ChatGPT menschenähnlichen Text generieren und ist in der Lage, auf eine Vielzahl von Fragen und Anfragen in natürlicher Sprache zu antworten. Es wurde entwickelt, um Informationen bereitzustellen, Texte zu generieren, Fragen zu beantworten und in verschiedenen Anwendungen wie Content-Erstellung, Textverständnis und vielem mehr unterstützend zu sein.</p>
+                <p><a href="https://chat.openai.com/" target="_blank"
+                    class="w3-text-teal">ChatGPT - Hilfe für jede Lebenslage</a></p>
             </li>
             <!-- Weitere Referenzen hinzufügen, falls nötig -->
         </ul>
@@ -222,7 +260,7 @@
         </div>
     </footer>
 
-    <script src="https://lcedl.github.io/g02//js/script.js"></script>
+    <script src="https://lcedl.github.io/g02/js/script.js"></script>
 </body>
 
 </html>
