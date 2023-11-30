@@ -245,7 +245,7 @@ function addLegendScatterplot(svg, data, color, width) {
 
 function createMultiSetBarChart(selector, data) {
   // Dimensionen und Margen des Diagramms
-  const margin = { top: 20, right: 20, bottom: 60, left: 70 },
+  const margin = { top: 20, right: 20, bottom: 120, left: 70 },
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
