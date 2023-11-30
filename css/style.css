@@ -22,13 +22,12 @@
 }
 
 /* Stellen Sie sicher, dass Tabellenköpfe sichtbar bleiben */
-.ranking,
 thead,
-tr,
 th {
   position: sticky;
   top: 0;
   background-color: #f1f1f1;
+  z-index: 1;
   /* Hintergrundfarbe der Kopfzeile */
 }
 
@@ -73,7 +72,7 @@ th {
 
 
 .bgimg-1 {
-  background-image: url('../image/image3.png');
+  background-image: url('https://lcedl.github.io/g02/image/image1.png');
   min-height: 100%;
 }
 
