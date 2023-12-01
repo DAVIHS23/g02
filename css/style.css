@@ -72,7 +72,7 @@ th {
 
 
 .bgimg-1 {
-  background-image: url('https://lcedl.github.io/g02/image/image1.png');
+  background-image: url('./image/image1.png');
   min-height: 100%;
 }
 
