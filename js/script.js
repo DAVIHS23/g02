@@ -9,8 +9,15 @@ const globalColorScale = d3.scaleOrdinal(myColors);
 // Laden der CSV-Datei und dann Ausführung des angegebenen Codes
 d3.csv(csvFilePath).then(data => {
 
-  // Filter out rows with empty 'esg_score' before sorting and creating the table
-  const filteredData = data.filter(row => row.esg_score !== null && row.esg_score !== undefined && row.esg_score !== '');
+  // Filter out rows with empty information before sorting and creating the table
+  const filteredData = data.filter(row =>
+    row.esg_score !== null &&
+    row.esg_score !== undefined &&
+    row.esg_score !== '' &&
+    row.industry !== null &&
+    row.industry !== undefined &&
+    row.industry !== ''
+  );
 
   //Frist Scatterplot Black and white
   createScatterplotblackandwhite("#scatterplot-first-blackandwhite", filteredData, "esg_score", "market_capitalization");
@@ -37,62 +44,75 @@ d3.csv(csvFilePath).then(data => {
   createDonutChart('#donut-plot', preparedData);
 });
 
-//create blackandwhite Scatterplot
 function createScatterplotblackandwhite(selector, data, xProp, yProp) {
   const margin = { top: 20, right: 20, bottom: 60, left: 70 },
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+        width = 960 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
 
+  // Skalen definieren
   const x = d3.scaleLinear()
-    .range([0, width])
-    .domain(d3.extent(data, d => +d[xProp]));
-
+      .range([0, width])
+      .domain(d3.extent(data, d => +d[xProp]));
   const y = d3.scaleSqrt()
-    .range([height, 0])
-    .domain(d3.extent(data, d => +d[yProp]));
+      .range([height, 0])
+      .domain([0, d3.max(data, d => +d[yProp])]); // Stellen Sie sicher, dass die untere Grenze 0 ist
 
+  // SVG-Element erstellen
   const svg = d3.select(selector)
-    .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform", `translate(${margin.left},${margin.top})`);
+      .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom);
 
-  // X-Achse
-  svg.append("g")
-    .attr("transform", `translate(0,${height})`)
-    .call(d3.axisBottom(x));
+  // Gruppe für die Achsen und Punkte
+  const plotArea = svg.append("g")
+      .attr("transform", `translate(${margin.left},${margin.top})`);
 
-  // Y-Achse
-  svg.append("g")
-    .call(d3.axisLeft(y));
-
-  // X-Achsenlegende
-  svg.append("text")
-    .attr("text-anchor", "end")
-    .attr("x", width / 2 + margin.left)
-    .attr("y", height + margin.top + 20)
-    .text(xProp.replace(/_/g, ' ')); // Ersetzt Unterstriche durch Leerzeichen
-
-  // Y-Achsenlegende
-  svg.append("text")
-    .attr("text-anchor", "end")
-    .attr("transform", "rotate(-90)")
-    .attr("y", -margin.left + 20)
-    .attr("x", -height / 2)
-    .text(yProp.replace(/_/g, ' ')); // Ersetzt Unterstriche durch Leerzeichen
+  // Achsen definieren
+  plotArea.append("g")
+      .attr("transform", `translate(0,${height})`)
+      .attr("class", "x-axis")
+      .call(d3.axisBottom(x));
+  const yAxis = plotArea.append("g")
+      .attr("class", "y-axis")
+      .call(d3.axisLeft(y));
 
   // Datenpunkte hinzufügen
-  svg.selectAll(".dot")
-    .data(data)
-    .enter().append("circle")
-    .attr("class", "dot")
-    .attr("r", 3.5)
-    .attr("cx", d => x(d[xProp]))
-    .attr("cy", d => y(d[yProp]))
-    .style("fill", "black"); // Alle Punkte in Schwarz
-}
+  const dots = plotArea.selectAll(".dot")
+      .data(data)
+      .enter().append("circle")
+      .attr("class", "dot")
+      .attr("r", 3.5)
+      .attr("cx", d => x(d[xProp]))
+      .attr("cy", d => y(d[yProp]))
+      .style("fill", "black");
 
+  // Zoom-Funktionalität
+  function zoom(svgElement) {
+    svgElement.call(d3.zoom()
+      .scaleExtent([1, 8])
+      .translateExtent([[0, 0], [width + margin.left + margin.right, height + margin.top + margin.bottom]])
+      .extent([[0, 0], [width, height]])
+      .on("zoom", zoomed));
+  }
+
+  function zoomed(event) {
+    let new_yScale = event.transform.rescaleY(y);
+
+    // Überprüfen und Anpassen der Skala, um sicherzustellen, dass sie nicht unter 0 geht
+    if (new_yScale.domain()[0] < 0) {
+      new_yScale.domain([0, new_yScale.domain()[1]]);
+    }
+
+    // Y-Achse mit neuer Skala aktualisieren
+    yAxis.call(d3.axisLeft(new_yScale));
+
+    // Kreise nur entlang der Y-Achse verschieben
+    dots.attr('cy', d => new_yScale(d[yProp]));
+  }
+
+  // Zoom-Funktionalität an das SVG-Element binden
+  zoom(svg);
+}
 
 // Funktion zur Erstellung der Rangliste in einem HTML-Element
 function createRanking(selector, data, columnName) {
@@ -138,6 +158,7 @@ function createScatterplotWithCheckboxes(selector, data, xProp, yProp, industryP
   addIndustryCheckboxes(data, industryProp, svg);
 }
 
+
 function createScatterplot(svg, data, width, height, xProp, yProp, industryProp) {
   // Erstellen einer Farbskala für verschiedene Industrien
   const color = globalColorScale
@@ -178,7 +199,7 @@ function createScatterplot(svg, data, width, height, xProp, yProp, industryProp)
     .text(yProp.replace(/_/g, ' ')); // Ersetzt Unterstriche durch Leerzeichen
 
   // Hinzufügen von Punkten
-  svg.selectAll("dot")
+  const dot = svg.selectAll("dot")
     .data(data)
     .enter()
     .append("circle")
@@ -189,6 +210,7 @@ function createScatterplot(svg, data, width, height, xProp, yProp, industryProp)
 
   // Hinzufügen der Legende
   addLegendScatterplot(svg, data, color, width);
+
 }
 
 function addIndustryCheckboxes(data, industryProp, svg) {
@@ -507,23 +529,23 @@ function createBoxplot(selector, data, scoreType) {
       .attr("y2", y(median))
       .attr("stroke", "black");
 
-      /*
-    // Unterer Whisker
-    svg.append("line")
-      .attr("x1", x(groupName))
-      .attr("x2", x(groupName))
-      .attr("y1", y(min))
-      .attr("y2", y(q1))
-      .attr("stroke", "black");
-
-    // Oberer Whisker
-    svg.append("line")
-      .attr("x1", x(groupName))
-      .attr("x2", x(groupName))
-      .attr("y1", y(max))
-      .attr("y2", y(q3))
-      .attr("stroke", "black");
-  */
+    /*
+  // Unterer Whisker
+  svg.append("line")
+    .attr("x1", x(groupName))
+    .attr("x2", x(groupName))
+    .attr("y1", y(min))
+    .attr("y2", y(q1))
+    .attr("stroke", "black");
+ 
+  // Oberer Whisker
+  svg.append("line")
+    .attr("x1", x(groupName))
+    .attr("x2", x(groupName))
+    .attr("y1", y(max))
+    .attr("y2", y(q3))
+    .attr("stroke", "black");
+*/
 
     // Ausreißer
     outliers.forEach(d => {
