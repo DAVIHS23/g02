@@ -15,12 +15,12 @@
     <!-- NAVIGATION BAR -->
     <section class="w3-top w3-teal w3-center">
         <nav class="w3-bar" id="myNavbar">
-            <a href="./index.html" class="w3-bar-item w3-button w3-text-black w3-sand"">Zurück zur Hauptseite</a>
             <a href=" #background" class="w3-bar-item w3-button w3-text-white">Background</a>
             <a href="#sketch" class="w3-bar-item w3-button w3-text-white">Erste Skizze</a>
             <a href="#design" class="w3-bar-item w3-button w3-text-white">Webseitengestaltung</a>
             <a href="#challenges" class="w3-bar-item w3-button w3-text-white">Herausforderungen</a>
             <a href="#datasource" class="w3-bar-item w3-button w3-text-white">Information zu Daten</a>
+            <a href="./index.html" class="w3-bar-item w3-button w3-text-black w3-sand"">Zurück zur Hauptseite</a>
         </nav>
     </section>
 
@@ -46,7 +46,12 @@
                     Screenshot der ersten Skizze hinzu, indem Sie das Bild mit einem <img>-Tag einbinden.
                 </p>
             </div>
-            <img class="w3-container w3-center" src="./image/frist_draw.png" alt="Erste Skizze">
+            <img class="w3-container w3-center" src="./image/frist_draw.png" alt="Erste Skizze" onclick="openLightbox('lightbox-container-first_draw');">
+            <!-- Lightbox Container -->
+            <div id="lightbox-container-first_draw" class="lightbox-hidden lightbox-container">
+                <span class="lightbox-close" onclick="closeLightbox('lightbox-container-first_draw');">&times;</span>
+                <img class="lightbox-content" src="./image/frist_draw.png">
+            </div>
         </section>
 
         <!-- Webseite Design Sektion -->
@@ -81,11 +86,12 @@
             </div>
             <a href="./data/DAVI_data.csv">Download CSV File</a>
             <div class="image-container">
-                <img src="./image/datasource.png" alt="Datenquelle Screenshot"" class="centered-image" onclick="openLightbox();">
-            </div>        
+                <img src="./image/datasource.png" alt="Datenquelle Screenshot"" class=" centered-image"
+                    onclick="openLightbox('lightbox-container-datasource');">
+            </div>
             <!-- Lightbox Container -->
-            <div id="lightbox-container" class="lightbox-hidden">
-                <span class="lightbox-close" onclick="closeLightbox();">&times;</span>
+            <div id="lightbox-container-datasource" class="lightbox-hidden lightbox-container">
+                <span class="lightbox-close" onclick="closeLightbox('lightbox-container-datasource');">&times;</span>
                 <img class="lightbox-content" src="./image/datasource.png">
             </div>
         </section>
@@ -102,4 +108,5 @@
 
     <script src="./js/script.js"></script>
 </body>
+
 </html>
