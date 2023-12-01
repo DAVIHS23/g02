@@ -545,3 +545,10 @@ function createBoxplot(selector, data, scoreType) {
   });
 }
 
+function openLightbox() {
+  document.getElementById('lightbox-container').style.display = 'flex';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox-container').style.display = 'none';
+}
