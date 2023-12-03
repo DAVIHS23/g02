@@ -55,6 +55,18 @@ function createScatterplotblackandwhite(selector, data, xProp, yProp) {
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom);
 
+  // Tooltip
+  var tooltip = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0)
+    .style("position", "absolute")
+    .style("background-color", "white")
+    .style("border", "solid")
+    .style("border-width", "1px")
+    .style("border-radius", "5px")
+    .style("z-index", 10)
+    .style("padding", "5px");
+
   // Gruppe für die Achsen und Punkte
   const plotArea = svg.append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
@@ -68,6 +80,22 @@ function createScatterplotblackandwhite(selector, data, xProp, yProp) {
     .attr("class", "y-axis")
     .call(d3.axisLeft(y));
 
+  // X-Achsenbeschriftung hinzufügen
+  plotArea.append("text")
+    .attr("transform", `translate(${width / 2}, ${height + margin.bottom - 10})`)
+    .style("text-anchor", "middle")
+    .text(xProp)
+    .text(xProp.replace(/_/g, ' '));
+
+  // Y-Achsenbeschriftung hinzufügen
+  plotArea.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 - margin.left + 20)
+    .attr("x", 0 - (height / 2))
+    .style("text-anchor", "middle")
+    .text(yProp)
+    .text(yProp.replace(/_/g, ' '));
+
   // Datenpunkte hinzufügen
   const dot = plotArea.selectAll(".dot")
     .data(data)
@@ -76,7 +104,20 @@ function createScatterplotblackandwhite(selector, data, xProp, yProp) {
     .attr("r", 3.5)
     .attr("cx", d => x(d[xProp]))
     .attr("cy", d => y(d[yProp]))
-    .style("fill", "black");
+    .style("fill", "black")
+    .on("mouseover", function (event, d) {
+      tooltip.transition()
+        .duration(200)
+        .style("opacity", .9);
+      tooltip.html("Company: " + d.company_name + "<br/>ESG Score: " + d.esg_score + "<br/>Market Cap: " + d.market_capitalization)
+        .style("left", (event.pageX) + "px")
+        .style("top", (event.pageY - 28) + "px");
+    })
+    .on("mouseout", function (d) {
+      tooltip.transition()
+        .duration(500)
+        .style("opacity", 0.5);
+    });
 
   // Zoom-Funktionalität
   function zoom(svgElement) {
@@ -100,9 +141,8 @@ function createScatterplotblackandwhite(selector, data, xProp, yProp) {
 
     // Kreise nur entlang der Y-Achse verschieben
     dot.attr('cy', d => new_yScale(d[yProp]));
-    console.log(event.transform);
   }
-
+/*
   // Zoom-Funktionalität an das SVG-Element binden
   svg.append("rect")
     .attr("width", width)
@@ -110,6 +150,7 @@ function createScatterplotblackandwhite(selector, data, xProp, yProp) {
     .style("fill", "none")
     .style("pointer-events", "all")
     .call(zoom);
+*/
 }
 
 // Funktion zur Erstellung der Rangliste in einem HTML-Element
@@ -143,12 +184,12 @@ function createScatterplotWithCheckboxes(selector, data, xProp, yProp, industryP
     height = 600 - margin.top - margin.bottom;
 
   const svg = d3.select(selector)
-  .append("svg")
-  .attr("width", width + margin.left + margin.right)
-  .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-  .attr("transform", `translate(${margin.left},${margin.top})`);
-  
+    .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", `translate(${margin.left},${margin.top})`);
+
   // Erstellen des Scatterplots
   createScatterplot(svg, data, width, height, margin, xProp, yProp, industryProp);
 
@@ -161,15 +202,13 @@ function createScatterplot(svg, data, width, height, margin, xProp, yProp, indus
   const color = globalColorScale
     .domain(data.map(d => d[industryProp]));
 
-  // X-Achsen-Skala definieren
+  // Skalen definieren
   const x = d3.scaleLinear()
-    .domain(d3.extent(data, d => +d[xProp]))
-    .range([0, width]);
-
-  // Y-Achsen-Skala definieren
+    .range([0, width])
+    .domain(d3.extent(data, d => +d[xProp]));
   const y = d3.scaleSqrt()
-    .domain(d3.extent(data, d => +d[yProp]))
-    .range([height, 0]);
+    .range([height, 0])
+    .domain([0, d3.max(data, d => +d[yProp])]);
 
   // Erstellen der Achsen
   svg.append("g")
@@ -215,20 +254,20 @@ function createScatterplot(svg, data, width, height, margin, xProp, yProp, indus
       .extent([[0, 0], [width, height]])
       .on("zoom", zoomed));
   }
+
   function zoomed(event) {
     let new_yScale = event.transform.rescaleY(y);
 
-    // Überprüfen und Anpassen der Skala, um sicherzustellen, dass sie nicht unter 0 geht
+    // Überprüfen und Anpassen der Y-Skala, um sicherzustellen, dass sie nicht unter 0 geht
     if (new_yScale.domain()[0] < 0) {
       new_yScale.domain([0, new_yScale.domain()[1]]);
     }
 
-    // Y-Achse mit neuer Skala aktualisieren
-    yAxis.call(d3.axisLeft(new_yScale));
+    //Y-Achsen mit neuen Skalen aktualisieren
+    svg.select(".y-axis").call(d3.axisLeft(new_yScale));
 
-    // Kreise nur entlang der Y-Achse verschieben
+    // Kreise an neue Skalen anpassen
     dot.attr('cy', d => new_yScale(d[yProp]));
-    console.log(event.transform);
   }
 
   // Zoom-Funktionalität an das SVG-Element binden
@@ -238,6 +277,7 @@ function createScatterplot(svg, data, width, height, margin, xProp, yProp, indus
     .style("fill", "none")
     .style("pointer-events", "all")
     .call(zoom);
+
 }
 
 function addIndustryCheckboxes(data, industryProp, svg) {
