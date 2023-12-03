@@ -14,7 +14,6 @@ d3.csv(csvFilePath).then(data => {
   //Frist Scatterplot Black and white
   createScatterplotblackandwhite("#scatterplot-first-blackandwhite", filteredData, "esg_score", "market_capitalization");
 
-
   // Nach der Datenkonvertierung, erstelle die Ranglisten
   //createRanking('#esg-table', data.sort((a, b) => b.esg_score - a.esg_score), 'esg_score'); //Absteigend sortiert
   createRanking('#esg-table', filteredData.sort((a, b) => a.esg_score - b.esg_score), 'esg_score'); // Aufsteigend sortiert
@@ -22,11 +21,6 @@ d3.csv(csvFilePath).then(data => {
 
   // Erstellen des Streudiagramms mit CheckboxFen
   createScatterplotWithCheckboxes('#scatterplot', filteredData, 'esg_score', 'market_capitalization', 'industry');
-
-  // Erstelle die Boxplots (environment_score, governance_score, social_score)
-  createBoxplot('#boxplot-environment', filteredData, 'environment_score');
-  createBoxplot('#boxplot-governance', filteredData, 'governance_score');
-  createBoxplot('#boxplot-social', filteredData, 'social_score');
 
   //Erstelle die MultiSetBar Chart
   createMultiSetBarChart('#barcar-e3score', filteredData)
@@ -67,9 +61,18 @@ function createScatterplotblackandwhite(selector, data, xProp, yProp) {
     .style("z-index", 10)
     .style("padding", "5px");
 
+
   // Gruppe für die Achsen und Punkte
   const plotArea = svg.append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
+
+  // Zoom-Funktionalität an das SVG-Element binden
+  plotArea.append("rect")
+    .attr("width", width)
+    .attr("height", height)
+    .style("fill", "none")
+    .style("pointer-events", "all")
+    .call(zoom);
 
   // Achsen definieren
   plotArea.append("g")
@@ -116,7 +119,7 @@ function createScatterplotblackandwhite(selector, data, xProp, yProp) {
     .on("mouseout", function (d) {
       tooltip.transition()
         .duration(500)
-        .style("opacity", 0.5);
+        .style("opacity", 0.8);
     });
 
   // Zoom-Funktionalität
@@ -142,15 +145,6 @@ function createScatterplotblackandwhite(selector, data, xProp, yProp) {
     // Kreise nur entlang der Y-Achse verschieben
     dot.attr('cy', d => new_yScale(d[yProp]));
   }
-/*
-  // Zoom-Funktionalität an das SVG-Element binden
-  svg.append("rect")
-    .attr("width", width)
-    .attr("height", height)
-    .style("fill", "none")
-    .style("pointer-events", "all")
-    .call(zoom);
-*/
 }
 
 // Funktion zur Erstellung der Rangliste in einem HTML-Element
@@ -210,6 +204,18 @@ function createScatterplot(svg, data, width, height, margin, xProp, yProp, indus
     .range([height, 0])
     .domain([0, d3.max(data, d => +d[yProp])]);
 
+  // Tooltip
+  var tooltip = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0)
+    .style("position", "absolute")
+    .style("background-color", "white")
+    .style("border", "solid")
+    .style("border-width", "1px")
+    .style("border-radius", "5px")
+    .style("z-index", 10)
+    .style("padding", "5px");
+
   // Erstellen der Achsen
   svg.append("g")
     .attr("transform", `translate(0,${height})`)
@@ -233,6 +239,14 @@ function createScatterplot(svg, data, width, height, margin, xProp, yProp, indus
     .attr("x", -height / 2)
     .text(yProp.replace(/_/g, ' ')); // Ersetzt Unterstriche durch Leerzeichen
 
+  // Zoom-Funktionalität an das SVG-Element binden
+  svg.append("rect")
+    .attr("width", width)
+    .attr("height", height)
+    .style("fill", "none")
+    .style("pointer-events", "all")
+    .call(zoom);
+
   // Hinzufügen von Punkten
   const dot = svg.selectAll("dot")
     .data(data)
@@ -241,7 +255,20 @@ function createScatterplot(svg, data, width, height, margin, xProp, yProp, indus
     .attr("cx", d => x(+d[xProp]))
     .attr("cy", d => y(+d[yProp]))
     .attr("r", 5)
-    .style("fill", d => color(d[industryProp]));
+    .style("fill", d => color(d[industryProp]))
+    .on("mouseover", function (event, d) {
+      tooltip.transition()
+        .duration(200)
+        .style("opacity", .9);
+      tooltip.html("Company: " + d.company_name + "<br/>ESG Score: " + d.esg_score + "<br/>Market Cap: " + d.market_capitalization)
+        .style("left", (event.pageX) + "px")
+        .style("top", (event.pageY - 28) + "px");
+    })
+    .on("mouseout", function (d) {
+      tooltip.transition()
+        .duration(500)
+        .style("opacity", 0.8);
+    });
 
   // Hinzufügen der Legende
   addLegendScatterplot(svg, data, color, width);
@@ -269,15 +296,6 @@ function createScatterplot(svg, data, width, height, margin, xProp, yProp, indus
     // Kreise an neue Skalen anpassen
     dot.attr('cy', d => new_yScale(d[yProp]));
   }
-
-  // Zoom-Funktionalität an das SVG-Element binden
-  svg.append("rect")
-    .attr("width", width)
-    .attr("height", height)
-    .style("fill", "none")
-    .style("pointer-events", "all")
-    .call(zoom);
-
 }
 
 function addIndustryCheckboxes(data, industryProp, svg) {
@@ -387,7 +405,10 @@ function createMultiSetBarChart(selector, data) {
     .attr("y", d => y(d.environment))
     .attr("width", barWidth)
     .attr("height", d => height - y(d.environment))
-    .attr("fill", "#1f77b4");
+    .attr("fill", "#1f77b4")
+    .on("click" , function(event, d) {
+      createBoxplot("#boxplot-container", data, 'environment_score');
+    });
 
   // Balken für governance_score
   svg.selectAll(".bar.governance")
@@ -399,7 +420,10 @@ function createMultiSetBarChart(selector, data) {
     .attr("y", d => y(d.governance))
     .attr("width", barWidth)
     .attr("height", d => height - y(d.governance))
-    .attr("fill", "#ff7f0e");
+    .attr("fill", "#ff7f0e")
+    .on("click" , function(event, d) {
+      createBoxplot("#boxplot-container", data, 'governance_score');
+    });
 
   // Balken für social_score
   svg.selectAll(".bar.social")
@@ -411,7 +435,11 @@ function createMultiSetBarChart(selector, data) {
     .attr("y", d => y(d.social))
     .attr("width", barWidth)
     .attr("height", d => height - y(d.social))
-    .attr("fill", "#2ca02c");
+    .attr("fill", "#2ca02c")
+    .on("click" , function(event, d) {
+      createBoxplot("#boxplot-container", data, 'social_score');
+    });
+
 
   // Legenden-Daten
   const legendData = [
@@ -519,6 +547,8 @@ function createDonutChart(selector, data) {
 }
 
 function createBoxplot(selector, data, scoreType) {
+
+  d3.select(selector).selectAll("*").remove();
   // Definieren der Dimensionen und Margen des SVG-Canvas
   let margin = { top: 10, right: 30, bottom: 90, left: 70 },
     width = 800 - margin.left - margin.right,
