@@ -5,7 +5,6 @@ const csvFilePath = './data/DAVI_data_clean.csv';
 const myColors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf', '#aec7e8'];
 const globalColorScale = d3.scaleOrdinal(myColors);
 
-
 // Laden der CSV-Datei und dann Ausführung des angegebenen Codes
 d3.csv(csvFilePath).then(data => {
 
@@ -14,20 +13,26 @@ d3.csv(csvFilePath).then(data => {
   //Frist Scatterplot Black and white
   createScatterplotblackandwhite("#scatterplot-first-blackandwhite", filteredData, "esg_score", "market_capitalization");
 
-  // Nach der Datenkonvertierung, erstelle die Ranglisten
-  //createRanking('#esg-table', data.sort((a, b) => b.esg_score - a.esg_score), 'esg_score'); //Absteigend sortiert
-  createRanking('#esg-table', filteredData.sort((a, b) => a.esg_score - b.esg_score), 'esg_score'); // Aufsteigend sortiert
-  createRanking('#market_capitalization-table', filteredData.sort((a, b) => b.market_capitalization - a.market_capitalization), 'market_capitalization');
-
   // Erstellen des Streudiagramms mit CheckboxFen
   createScatterplotWithCheckboxes('#scatterplot', filteredData, 'esg_score', 'market_capitalization', 'industry');
 
   //Erstelle die MultiSetBar Chart
   createMultiSetBarChart('#barcar-e3score', filteredData)
 
-  // Erstellen des Donut-Diagramms
-  const preparedData = prepareDonutData(filteredData, 'industry', 'full_time_employees');
-  createDonutChart('#donut-plot', preparedData);
+  // Erstellen der Donut-Diagramme
+  const dataForEmployees = prepareDonutData(filteredData, 'industry', 'full_time_employees');
+  createDonutChart('#donut-plot-worker', dataForEmployees);
+
+  const dataForMarketCap = prepareDonutData(filteredData, 'industry', 'market_capitalization');
+  createDonutChart('#donut-plot-marketcap', dataForMarketCap);
+
+  const combinedLegendData = combineDataForLegend(dataForEmployees, dataForMarketCap);
+  createCombinedDonutChartLegend("#donut-legend", combinedLegendData, globalColorScale);
+
+  // Ranking erstellen
+  //createRanking('#esg-table', data.sort((a, b) => b.esg_score - a.esg_score), 'esg_score'); //Absteigend sortiert
+  createRanking('#esg-table', filteredData.sort((a, b) => a.esg_score - b.esg_score), 'esg_score'); // Aufsteigend sortiert
+  createRanking('#market_capitalization-table', filteredData.sort((a, b) => b.market_capitalization - a.market_capitalization), 'market_capitalization');
 });
 
 function createScatterplotblackandwhite(selector, data, xProp, yProp) {
@@ -406,7 +411,7 @@ function createMultiSetBarChart(selector, data) {
     .attr("width", barWidth)
     .attr("height", d => height - y(d.environment))
     .attr("fill", "#1f77b4")
-    .on("click" , function(event, d) {
+    .on("click", function (event, d) {
       createBoxplot("#boxplot-container", data, 'environment_score');
     });
 
@@ -421,7 +426,7 @@ function createMultiSetBarChart(selector, data) {
     .attr("width", barWidth)
     .attr("height", d => height - y(d.governance))
     .attr("fill", "#ff7f0e")
-    .on("click" , function(event, d) {
+    .on("click", function (event, d) {
       createBoxplot("#boxplot-container", data, 'governance_score');
     });
 
@@ -436,7 +441,7 @@ function createMultiSetBarChart(selector, data) {
     .attr("width", barWidth)
     .attr("height", d => height - y(d.social))
     .attr("fill", "#2ca02c")
-    .on("click" , function(event, d) {
+    .on("click", function (event, d) {
       createBoxplot("#boxplot-container", data, 'social_score');
     });
 
@@ -475,10 +480,10 @@ function createMultiSetBarChart(selector, data) {
 }
 
 // Funktion zum Vorbereiten der Daten für das Donut-Diagramm
-function prepareDonutData(data, industryProp, employeeSizeProp) {
+function prepareDonutData(data, industryProp, dataProp) {
   // Verwenden von d3.rollup, um die Daten zu aggregieren
   const industryCounts = d3.rollup(data,
-    v => d3.sum(v, d => +d[employeeSizeProp]), // Summiere das 'employeeSizeProp' für jede Gruppe
+    v => d3.sum(v, d => +d[dataProp]), // Summiere das 'dataProp' für jede Gruppe
     d => d[industryProp]); // Gruppierung nach 'industryProp'
 
   // Konvertieren der Map zurück in ein für d3.pie passendes Array
@@ -488,15 +493,17 @@ function prepareDonutData(data, industryProp, employeeSizeProp) {
 }
 
 function createDonutChart(selector, data) {
+  const donutChartContainer = d3.select(selector).append("div")
+  .attr("class", "donut-chart");
+
   // Größe und Marge des Diagramms festlegen
-  const width = 800, // Breiter, um Platz für Beschriftungen zu schaffen
-    height = 550,
-    margin = 100; // Größere Marge für Beschriftungen
+  const width = 350,
+    height = 350,
+    margin = 10; // Größere Marge für Beschriftungen
   const radius = Math.min(width, height) / 2 - margin;
 
   // SVG-Element erstellen
-  const svg = d3.select(selector)
-    .append("svg")
+  const svg = donutChartContainer.append("svg")
     .attr("width", width)
     .attr("height", height)
     .append("g")
@@ -523,27 +530,96 @@ function createDonutChart(selector, data) {
     .append('path')
     .attr('d', arc)
     .attr('fill', d => color(d.data.key))
+    .attr('class', d => `slice ${formatClassName(d.data.key)}`)
     .attr("stroke", "white")
     .style("stroke-width", "2px")
+    .on("click", (event, d) => {
+      highlightIndustry(formatClassName(d.data.key));
+    });
 
-  // Legende erstellen
-  const legendContainer = d3.select("#donut-legend");
+}
 
-  data.forEach((d, i) => {
-    const legendItem = legendContainer.append("div")
-      .style("display", "flex")
-      .style("align-items", "center")
-      .style("margin-bottom", "5px");
+function formatClassName(industryName) {
+  return industryName.replace(/\s+/g, '_').toLowerCase(); // Ersetzt alle Leerzeichen durch Unterstriche
+}
 
-    legendItem.append("div")
-      .style("width", "20px")
-      .style("height", "20px")
-      .style("background-color", color(d.key))
-      .style("margin-right", "10px");
+function combineDataForLegend(dataEmployees, dataMarketCap) {
+  let combinedData = new Map();
 
-    legendItem.append("div")
-      .text(`${d.key}: ${d.value}`);
+  // Hinzufügen von Employee-Daten
+  dataEmployees.forEach(d => {
+    combinedData.set(d.key, { industry: d.key, employees: d.value });
   });
+
+  // Hinzufügen von MarketCap-Daten
+  dataMarketCap.forEach(d => {
+    if (combinedData.has(d.key)) {
+      combinedData.get(d.key).marketCap = d.value;
+    } else {
+      combinedData.set(d.key, { industry: d.key, marketCap: d.value });
+    }
+  });
+
+  return Array.from(combinedData.values());
+}
+
+function createCombinedDonutChartLegend(selector, combinedData, colorScale) {
+  const legendContainer = d3.select(selector).append("div")
+    .attr("class", "combined-donut-chart-legend");
+
+  // Erstellen der Tabelle innerhalb des Containers
+  const table = legendContainer.append("table");
+
+  // Kopfzeile der Tabelle hinzufügen
+  const thead = table.append("thead");
+  const headerRow = thead.append("tr");
+  headerRow.append("th").text(""); // Für die Farbbox
+  headerRow.append("th").text("Industrie");
+  headerRow.append("th").text("Vollzeit- angestellte");
+  headerRow.append("th").text("Marktkapitalisierung in Mrd");
+
+  // Körper der Tabelle hinzufügen
+  const tbody = table.append("tbody");
+
+  combinedData.forEach(d => {
+    // Erstellen einer Tabellenzeile für jedes Element
+    const row = tbody.append("tr")
+      .attr("class", `legend-item ${formatClassName(d.industry)}`)
+      .on('click', () => highlightIndustry(formatClassName(d.industry)));
+
+    // Zelle für die Farbbox
+    row.append("td")
+      .append("div")
+      .attr("class", `legend-item ${formatClassName(d.industry)}`)
+      .style("min-width", "20px")
+      .style("min-height", "20px")
+      .style("background-color", colorScale(d.industry));
+
+    // Zelle für den Namen der Industrie
+    row.append("td")
+      .style("min-width", "125px")
+      .text(d.industry);
+
+    // Zelle für die Anzahl der Mitarbeiter
+    row.append("td")
+      .text(d3.format(",")(d.employees || 0));
+
+    // Zelle für die Marktkapitalisierung
+    row.append("td")
+      .text(d3.format(",")(d.marketCap || 0));
+  });
+}
+
+function highlightIndustry(industryKey) {
+  console.log("Clicked Industry Key:", industryKey);
+  console.log(d3.selectAll('.donut-chart.slice').nodes());
+  // Hervorhebung in beiden Donut-Charts
+  d3.selectAll('.donut-chart .slice').style('opacity', 0.5);
+  d3.selectAll(`.donut-chart .${industryKey}`).style('opacity', 1);
+
+  // Hervorhebung in der Legende
+  d3.selectAll('.combined-donut-chart-legend tr').style('font-weight', 'normal');
+  d3.selectAll(`.combined-donut-chart-legend .${industryKey}`).style('font-weight', 'bold');
 }
 
 function createBoxplot(selector, data, scoreType) {
