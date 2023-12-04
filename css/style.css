@@ -21,7 +21,7 @@
   /* Für etwas Abstand nach unten */
 }
 
-/* Stellen Sie sicher, dass Tabellenköpfe sichtbar bleiben */
+
 thead,
 th {
   position: sticky;
@@ -62,14 +62,11 @@ th {
   /* Verhindert das Wiederholen des Bildes */
   background-attachment: fixed;
   /* Das Bild bleibt beim Scrollen an der gleichen Stelle */
-
-
   height: 100vh;
   /* Setzt die Höhe auf 100% der Ansichtshöhe (viewport height) */
   width: 100vw;
   /* Setzt die Breite auf 100% der Ansichtsbreite (viewport width) */
 }
-
 
 .bgimg-1 {
   background-image: url('https://lcedl.github.io/g02/image/image1.png');
@@ -93,13 +90,12 @@ th {
   }
 }
 
-#donut-legend div {
+#donut-legend{
   font-size: 12px; 
 }
 
 .image-container {
   text-align: center; /* Zentriert das Bild horizontal */
-  /* Optional: Falls Sie Flexbox verwenden möchten */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -140,4 +136,13 @@ th {
   font-weight: bold;
   color: white;
   cursor: pointer;
+}
+
+.combined-donut-chart-legend table tr {
+  height: 30px; 
+}
+
+.combined-donut-chart-legend table td, 
+.combined-donut-chart-legend table th {
+  text-align: left;
 }
