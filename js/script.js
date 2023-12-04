@@ -31,8 +31,8 @@ d3.csv(csvFilePath).then(data => {
 
   // Ranking erstellen
   //createRanking('#esg-table', data.sort((a, b) => b.esg_score - a.esg_score), 'esg_score'); //Absteigend sortiert
-  createRanking('#esg-table', filteredData.sort((a, b) => a.esg_score - b.esg_score), 'esg_score'); // Aufsteigend sortiert
-  createRanking('#market_capitalization-table', filteredData.sort((a, b) => b.market_capitalization - a.market_capitalization), 'market_capitalization');
+  createRanking('#esg-table', filteredData.sort((a, b) => a.esg_score - b.esg_score), 'esg_score', ['Firmen Name', 'ESG-Risiko-Gesamtwertung', 'Industrie']); // Aufsteigend sortiert
+  createRanking('#market_capitalization-table', filteredData.sort((a, b) => b.market_capitalization - a.market_capitalization), 'market_capitalization', ['Firmen Name', 'Marktkapitalisierung in Mrd', 'Industrie']);
 });
 
 function createScatterplotblackandwhite(selector, data, xProp, yProp) {
@@ -92,8 +92,7 @@ function createScatterplotblackandwhite(selector, data, xProp, yProp) {
   plotArea.append("text")
     .attr("transform", `translate(${width / 2}, ${height + margin.bottom - 10})`)
     .style("text-anchor", "middle")
-    .text(xProp)
-    .text(xProp.replace(/_/g, ' '));
+    .text('ESG-Risiko-Gesamtwertung');
 
   // Y-Achsenbeschriftung hinzufügen
   plotArea.append("text")
@@ -101,8 +100,8 @@ function createScatterplotblackandwhite(selector, data, xProp, yProp) {
     .attr("y", 0 - margin.left + 20)
     .attr("x", 0 - (height / 2))
     .style("text-anchor", "middle")
-    .text(yProp)
-    .text(yProp.replace(/_/g, ' '));
+    .text('Marktkapitalisierung in Mrd');
+
 
   // Datenpunkte hinzufügen
   const dot = plotArea.selectAll(".dot")
@@ -153,13 +152,12 @@ function createScatterplotblackandwhite(selector, data, xProp, yProp) {
 }
 
 // Funktion zur Erstellung der Rangliste in einem HTML-Element
-function createRanking(selector, data, columnName) {
+function createRanking(selector, data, columnName, headers) {
   // Zuerst das vorhandene Element leeren, um Duplikate zu vermeiden
   d3.select(selector).html('');
 
   // Erstellen der Tabelle
   const table = d3.select(selector).append('table');
-  const headers = ['company_name', columnName, 'industry'];
   table.append('thead').append('tr').selectAll('th')
     .data(headers)
     .enter().append('th')
@@ -234,7 +232,7 @@ function createScatterplot(svg, data, width, height, margin, xProp, yProp, indus
     .attr("text-anchor", "end")
     .attr("x", width / 2 + margin.left)
     .attr("y", height + margin.top + 20)
-    .text(xProp.replace(/_/g, ' ')); // Ersetzt Unterstriche durch Leerzeichen
+    .text('ESG-Risiko-Gesamtwertung');
 
   // Y-Achsenlegende
   var yAxis = svg.append("text")
@@ -242,7 +240,7 @@ function createScatterplot(svg, data, width, height, margin, xProp, yProp, indus
     .attr("transform", "rotate(-90)")
     .attr("y", -margin.left + 20)
     .attr("x", -height / 2)
-    .text(yProp.replace(/_/g, ' ')); // Ersetzt Unterstriche durch Leerzeichen
+    .text('Marktkapitalisierung in Mrd');
 
   // Zoom-Funktionalität an das SVG-Element binden
   svg.append("rect")
@@ -396,6 +394,14 @@ function createMultiSetBarChart(selector, data) {
   svg.append("g")
     .call(d3.axisLeft(y));
 
+  // Y-Achsenlegende
+  var yAxis = svg.append("text")
+    .attr("text-anchor", "end")
+    .attr("transform", "rotate(-90)")
+    .attr("y", -margin.left + 20)
+    .attr("x", -height / 2)
+    .text('ESG-Risiko-Gesamtwertung');
+
   // Funktion, um die Position der Balken zu berechnen
   const barWidth = x.bandwidth() / 3;
   const calculateBarX = (d, index) => x(d.industry) + index * barWidth;
@@ -412,7 +418,7 @@ function createMultiSetBarChart(selector, data) {
     .attr("height", d => height - y(d.environment))
     .attr("fill", "#1f77b4")
     .on("click", function (event, d) {
-      createBoxplot("#boxplot-container", data, 'environment_score');
+      createBoxplot("#boxplot-container", data, 'environment_score', "Umwelt-Risikowertung");
     });
 
   // Balken für governance_score
@@ -427,7 +433,7 @@ function createMultiSetBarChart(selector, data) {
     .attr("height", d => height - y(d.governance))
     .attr("fill", "#ff7f0e")
     .on("click", function (event, d) {
-      createBoxplot("#boxplot-container", data, 'governance_score');
+      createBoxplot("#boxplot-container", data, 'governance_score', "Governance-Risikowertung");
     });
 
   // Balken für social_score
@@ -442,15 +448,15 @@ function createMultiSetBarChart(selector, data) {
     .attr("height", d => height - y(d.social))
     .attr("fill", "#2ca02c")
     .on("click", function (event, d) {
-      createBoxplot("#boxplot-container", data, 'social_score');
+      createBoxplot("#boxplot-container", data, 'social_score', "Sozial-Risikowertung");
     });
 
 
   // Legenden-Daten
   const legendData = [
-    { label: "Environment Score", color: "#1f77b4" },
-    { label: "Governance Score", color: "#ff7f0e" },
-    { label: "Social Score", color: "#2ca02c" }
+    { label: "Umwelt-Risikowertung", color: "#1f77b4" },
+    { label: "Governance-Risikowertung", color: "#ff7f0e" },
+    { label: "Sozial-Risikowertung", color: "#2ca02c" }
   ];
 
   // Hinzufügen der Legende
@@ -494,7 +500,7 @@ function prepareDonutData(data, industryProp, dataProp) {
 
 function createDonutChart(selector, data) {
   const donutChartContainer = d3.select(selector).append("div")
-  .attr("class", "donut-chart");
+    .attr("class", "donut-chart");
 
   // Größe und Marge des Diagramms festlegen
   const width = 350,
@@ -622,7 +628,7 @@ function highlightIndustry(industryKey) {
   d3.selectAll(`.combined-donut-chart-legend .${industryKey}`).style('font-weight', 'bold');
 }
 
-function createBoxplot(selector, data, scoreType) {
+function createBoxplot(selector, data, scoreType, header) {
 
   d3.select(selector).selectAll("*").remove();
   // Definieren der Dimensionen und Margen des SVG-Canvas
@@ -734,9 +740,8 @@ function createBoxplot(selector, data, scoreType) {
       .attr("transform", "rotate(-90)")
       .attr("y", 0 - margin.left + 20)
       .attr("x", 0 - (height / 2))
-      .attr("dy", "0.8em")
       .style("text-anchor", "middle")
-      .text(scoreType.replace('_', ' ').toUpperCase());
+      .text(header);
   });
 }
 
