@@ -1,5 +1,5 @@
 // Pfad zur CSV-Datei
-const csvFilePath = './data/DAVI_data_clean.csv';
+const csvFilePath = './data/DAVI_data_clean_de.csv';
 
 // Farben der Scala
 const myColors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf', '#aec7e8'];
