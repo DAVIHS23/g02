@@ -274,7 +274,7 @@ function createScatterplot(svg, data, width, height, margin, xProp, yProp, indus
     });
 
   // Hinzufügen der Legende
-  addLegendScatterplot(svg, data, color, width);
+  addLegendScatterplot(svg, data, color, width-90);
 
   // Zoom-Funktionalität
   function zoom(svgElement) {
@@ -471,14 +471,14 @@ function createMultiSetBarChart(selector, data) {
 
   // Rechtecke für die Legende
   legend.append("rect")
-    .attr("x", width - 19)
+    .attr("x", width + 5)
     .attr("width", 19)
     .attr("height", 19)
     .attr("fill", d => d.color);
 
   // Text für die Legende
   legend.append("text")
-    .attr("x", width - 24)
+    .attr("x", width )
     .attr("y", 9.5)
     .attr("dy", "0.32em")
     .text(d => d.label);
